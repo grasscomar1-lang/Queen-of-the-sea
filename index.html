@@ -19,7 +19,7 @@ small{display:block;margin-top:12px;font-size:12px}
 #tg{position:fixed;left:10px;bottom:10px;width:64px;height:200px;border-radius:14px;z-index:3;display:flex;flex-direction:column;padding:5px 4px;box-sizing:border-box}
 #tg div{flex:1;margin:2px 0;border-radius:6px;font-size:9px;display:flex;align-items:center;justify-content:center;text-align:center;background:#2a1a0c;border:1px solid #8a6a30;line-height:1.1}
 #tg div.on{background:radial-gradient(#ffd96a,#c9891a);color:#2a1a0c;font-weight:bold;box-shadow:0 0 8px #ffc94a}
-#wh{position:fixed;left:84px;bottom:10px;width:130px;height:130px;border-radius:50%;z-index:3;padding:0;overflow:hidden}
+#wh{position:fixed;left:130px;bottom:6px;width:136px;height:136px;border-radius:50%;z-index:3;padding:0;filter:drop-shadow(0 3px 5px #000a)}
 #wh svg{width:100%;height:100%;transition:transform .08s}
 .gun{position:fixed;width:78px;height:78px;border-radius:50%;z-index:3;bottom:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#f3e7c9;font-size:12px;border:3px solid #c9a24a;box-shadow:0 3px 8px #000a;background:conic-gradient(#ffb030 100%,#2a1a0c 0)}
 .gun:before{content:"";position:absolute;inset:6px;border-radius:50%;background:radial-gradient(#6b4626,#3a2410)}.gun>*{position:relative}
@@ -32,7 +32,12 @@ small{display:block;margin-top:12px;font-size:12px}
 @media (max-height:430px){#mm{width:110px;height:110px}#tg{height:172px}#wh{width:112px;height:112px}.gun{width:66px;height:66px;bottom:14px}.sm{width:38px;height:38px;bottom:92px;font-size:18px}#h{font-size:11px;padding:4px 7px}.hb{width:120px}}
 </style></head><body><canvas id="c"></canvas><canvas id="o"></canvas><canvas id="mm" width="150" height="150"></canvas><div id="h"></div><div id="rot">📱↻<br>Ruota il telefono in orizzontale per giocare</div>
 <div id="tg" class="wood"><div data-l="4">TUTTA<br>VELA</div><div data-l="3">MEZZA<br>VELA</div><div data-l="2">LENTO</div><div data-l="1">FERMA</div><div data-l="0">RETRO</div></div>
-<div id="wh" class="wood"><svg viewBox="-50 -50 100 100"><circle r="44" fill="#4a2e14" stroke="#c9a24a" stroke-width="4"/><circle r="31" fill="none" stroke="#7a4a22" stroke-width="7"/><path d="M-46 0H46M0-46V46M-33-33L33 33M33-33L-33 33" stroke="#c9a24a" stroke-width="5" stroke-linecap="round"/><circle r="9" fill="#c9a24a" stroke="#4a2e14" stroke-width="2"/></svg></div>
+<div class="sm wood" id="sp" style="left:78px;bottom:120px">+</div><div class="sm wood" id="sq" style="left:78px;bottom:66px">−</div>
+<div id="wh"><svg viewBox="-52 -52 104 104"><defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0a83a"/><stop offset="1" stop-color="#a85d12"/></linearGradient><radialGradient id="hb"><stop offset="0" stop-color="#e2c25a"/><stop offset="1" stop-color="#8a6a1a"/></radialGradient>
+<g id="wk"><path d="M0-8V-31" stroke="#5a3208" stroke-width="5.6" stroke-linecap="round"/><path d="M0-8V-31" stroke="#d58a26" stroke-width="3.6"/><circle cy="-15" r="2.3" fill="#a8641a"/><circle cy="-22" r="2.3" fill="#a8641a"/><path d="M0-38V-49" stroke="#5a3208" stroke-width="7.4" stroke-linecap="round"/><path d="M0-38V-49" stroke="#e09a30" stroke-width="5.2" stroke-linecap="round"/><rect x="-3.4" y="-40" width="6.8" height="2.8" fill="#c9a24a"/></g></defs>
+<use href="#wk"/><use href="#wk" transform="rotate(45)"/><use href="#wk" transform="rotate(90)"/><use href="#wk" transform="rotate(135)"/><use href="#wk" transform="rotate(180)"/><use href="#wk" transform="rotate(225)"/><use href="#wk" transform="rotate(270)"/><use href="#wk" transform="rotate(315)"/>
+<circle r="34" fill="none" stroke="url(#wg)" stroke-width="9"/><circle r="38.6" fill="none" stroke="#5a3208" stroke-width="1.2"/><circle r="29.4" fill="none" stroke="#5a3208" stroke-width="1.2"/>
+<circle r="10" fill="url(#hb)" stroke="#5a4210" stroke-width="1.5"/><circle r="5.5" fill="none" stroke="#6a4f14" stroke-width="1.2"/><circle r="2.6" fill="#f3e7c9"/></svg></div>
 
 <div class="gun" id="fl" style="right:96px"><svg viewBox="0 0 40 24" width="40"><g fill="#e8d5a3"><rect x="4" y="6" width="26" height="9" rx="4"/><circle cx="14" cy="18" r="5.5"/><circle cx="32" cy="10" r="3"/></g></svg><b>SX</b></div>
 <div class="gun" id="fr" style="right:10px"><svg viewBox="0 0 40 24" width="40" style="transform:scaleX(-1)"><g fill="#e8d5a3"><rect x="4" y="6" width="26" height="9" rx="4"/><circle cx="14" cy="18" r="5.5"/><circle cx="32" cy="10" r="3"/></g></svg><b>DX</b></div>
@@ -117,6 +122,10 @@ const tex={};
 const ft={},st_={};function ftex(f){return ft[f[0]]||(ft[f[0]]=new THREE.CanvasTexture(flagCv(f,300,200)))}
 function stx(f){return st_[f[0]]||(st_[f[0]]=new THREE.CanvasTexture(flagCv(f,200,250)))}
 function mkFlag(f,w,h,s){const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h,8,3),new THREE.MeshBasicMaterial({map:ftex(f),side:THREE.DoubleSide}));s.flags.push({m,w});return m}
+const pgc={},pmat=new THREE.MeshPhongMaterial({vertexColors:true,flatShading:true});
+function personG(hex){if(pgc[hex])return pgc[hex];const parts=[[new THREE.CylinderGeometry(.55,.7,2.2,6).translate(0,1.1,0),new THREE.Color(hex)],[new THREE.SphereGeometry(.5,6,5).translate(0,2.6,0),new THREE.Color(0xe0b890)],[new THREE.SphereGeometry(.56,6,4,0,PI*2,0,PI/2).translate(0,2.75,0),new THREE.Color(0x8a8a8a)]],P=[],N=[],C=[],I=[];let o=0;
+ for(const[g,cc]of parts){const p=g.attributes.position.array,n=g.attributes.normal.array;for(let i=0;i<p.length;i++){P.push(p[i]);N.push(n[i])}for(let i=0;i<p.length/3;i++)C.push(cc.r,cc.g,cc.b);for(const i of g.index.array)I.push(i+o);o+=p.length/3}
+ const m=new THREE.BufferGeometry();m.setAttribute('position',new THREE.Float32BufferAttribute(P,3));m.setAttribute('normal',new THREE.Float32BufferAttribute(N,3));m.setAttribute('color',new THREE.Float32BufferAttribute(C,3));m.setIndex(I);return pgc[hex]=m}
 function sailTex(f){if(tex[f[0]])return tex[f[0]];const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d');
  x.fillStyle=f[1];x.fillRect(0,0,128,128);x.fillStyle=x.strokeStyle=f[2];const p=f[3];
  if(p==1)for(let i=0;i<128;i+=32)x.fillRect(0,i+8,128,16);
@@ -153,8 +162,14 @@ function mkMesh(s){const[,L,Wd,M,Or,,,,G]=s.d,f=s.f,gr=new THREE.Group(),Hh=Wd*.
   gr.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(pts,3)),new THREE.LineBasicMaterial({color:0x2a1a0c})));
   const fl=mkFlag(f,12,8,s);fl.position.set(x-6,top+mh+4,0);gr.add(fl);
   s.sails.push({p:pv,m:sm,w:sw,h:shh})}
- if(Or){const n=Math.floor(L/7);for(let i=0;i<n;i++)for(const sd of[-1,1]){const o=new THREE.Group(),b=new THREE.Mesh(new THREE.BoxGeometry(.5,.4,L*.26),mat(0x3a2410));b.position.z=sd*L*.13;o.add(b);o.position.set(L*.33-i*L*.62/n,top-1,sd*Wd/2);gr.add(o);s.oars.push(o)}}
+ if(Or){const n=Math.floor(L/7);for(let i=0;i<n;i++)for(const sd of[-1,1]){const o=new THREE.Group(),b=new THREE.Mesh(new THREE.BoxGeometry(.5,.4,L*.26),mat(0x3a2410));b.position.z=sd*L*.13;o.add(b);o.position.set(L*.33-i*L*.62/n,top-1,sd*Wd/2);o.userData.sd=sd;gr.add(o);s.oars.push(o)}}
  {const sy=top+(L>50?Hh*.7:0),fw=L*.26,pole=new THREE.Mesh(new THREE.CylinderGeometry(.4,.4,L*.3,5),mat(0x3a2410)),sf=mkFlag(f,fw,L*.17,s);pole.position.set(-L/2+1,sy+L*.15,0);gr.add(pole);sf.position.set(-L/2+1-fw/2,sy+L*.22,0);gr.add(sf)}
+ s.crew=[];const pg=[personG(f[1]),personG(f[2])],add=(a,b,y,sc_,r)=>{const m=new THREE.Mesh(pg[s.crew.length%2],pmat);m.position.set(a,y,b);m.scale.set(1.2,sc_*1.2,1.2);gr.add(m);s.crew.push({m,r,k:R()})};
+ if(Or){const n=Math.floor(L/7);for(let i=0;i<n;i++)for(const sd of[-1,1])add(L*.33-i*L*.62/n,sd*Wd*.28,top,.75,1)}
+ for(let i=0;i<G/2;i++){const x=(G>2?i/(G/2-1)-.5:0)*L*.5;for(const sd of[-1,1])add(x,sd*Wd*.3,top,1,0)}
+ add(-L*.38,0,top+(L>50?Hh*.7:0),1,0);
+ for(let i=0;i<4;i++)add(L*.3,(i%2?1:-1)*Wd*.15,top+(L>65?Hh*.5:0),1,0);
+ add(-L*.1,Wd*.1,top+1,1,0);add(L*.1,-Wd*.1,top+1,1,0);
  const lt=new THREE.Mesh(new THREE.SphereGeometry(1.3,6,6),new THREE.MeshBasicMaterial({color:0xffd070}));lt.position.set(-L/2-1,top+Hh*.9+(L>50?Hh*.7:0),Wd*.3);gr.add(lt);
  s.g=gr;sc.add(gr)}
 function addHit(s,lx,ly,r){const[,L,Wd]=s.d,Hh=Wd*.6,sd=ly>0?1:-1,e=Wd/2*(lx>L*.2?Math.max(.15,(L/2-lx)/(L*.3)):lx<-L/3?.7:1),y=Hh*(R()*.4);
@@ -179,7 +194,7 @@ onkeydown=e=>{const q=e.key.length>1?e.key:e.key.toLowerCase();k[q]=1;if(!pl||ov
  if(q=='w'||q=='ArrowUp')spd(1);if(q=='s'||q=='ArrowDown')spd(-1);if(q=='q')fire(pl,-1);if(q=='e')fire(pl,1);if(q=='r')cy=0;if(q=='+'||q=='=')zm=cl(zm-.3,0,3);if(q=='-')zm=cl(zm+.3,0,3)};
 onkeyup=e=>{k[e.key.length>1?e.key:e.key.toLowerCase()]=0};
 function bt(id,dn,up){const e=$(id);e.onpointerdown=ev=>{ev.preventDefault();dn()};if(up)e.onpointerup=e.onpointerleave=e.onpointercancel=up}
-bt('fl',()=>pl&&fire(pl,-1));bt('fr',()=>pl&&fire(pl,1));bt('bc',()=>cy=0);bt('zp',()=>zm=cl(zm-.3,0,3));bt('zo',()=>zm=cl(zm+.3,0,3));onwheel=e=>{zm=cl(zm+e.deltaY*.001,0,3)};
+bt('sp',()=>spd(1));bt('sq',()=>spd(-1));bt('fl',()=>pl&&fire(pl,-1));bt('fr',()=>pl&&fire(pl,1));bt('bc',()=>cy=0);bt('zp',()=>zm=cl(zm-.3,0,3));bt('zo',()=>zm=cl(zm+.3,0,3));onwheel=e=>{zm=cl(zm+e.deltaY*.001,0,3)};
 document.querySelectorAll('#tg div').forEach(e=>e.onpointerdown=ev=>{ev.preventDefault();if(pl&&!over)pl.lvl=+e.dataset.l});
 const wh=$('wh'),wset=ev=>{const r=wh.getBoundingClientRect(),x=ev.clientX-(r.left+r.width/2);k.tl=x<-8;k.tr=x>8};
 wh.onpointerdown=ev=>{ev.preventDefault();wh.setPointerCapture(ev.pointerId);wset(ev)};wh.onpointermove=ev=>{if(ev.buttons||ev.pressure)wset(ev)};wh.onpointerup=wh.onpointercancel=()=>{k.tl=k.tr=false};
@@ -212,7 +227,9 @@ function sync(s){if(s.sink>1){s.g.visible=false;return}const g=s.g;
  g.position.set(s.x,wv(s.x,s.y)-(s.hp<=0?s.sink*14:0),s.y);g.rotation.order='YZX';
  g.rotation.set(Math.sin(T*.035+s.sd)*.04-s.tin*s.v*.03+(s.hp<=0?s.sink*.9:0),-s.a,Math.sin(T*.04+s.sd*2)*.025+(s.hp<=0?s.sink*.4:0));
  for(const a of s.sails){a.p.rotation.y=cl(wr(wa-s.a)*.45,-.9,.9);a.m.scale.y+=((s.lvl>=2&&s.hp>0?1:.15)-a.m.scale.y)*.05}
- s.oars.forEach((o,i)=>o.rotation.y=Math.sin(T*Math.abs(s.v)*.12+i*.5)*.35);
+ s.oph=(s.oph||0)+Math.abs(s.v)*.09;const ph=s.oph,sw=Math.sin(ph);
+ s.oars.forEach(o=>{const sd=o.userData.sd;o.rotation.set(-sd*(.12+.2*Math.max(0,Math.cos(ph))),sd*sw*.4,0)});
+ for(const c of s.crew){if(c.r)c.m.rotation.z=-sw*.4;c.m.visible=c.k<.15+.85*Math.max(0,s.hp)/s.mx}
  for(const a of s.flags){const p=a.m.geometry.attributes.position;for(let i=0;i<p.count;i++)p.setZ(i,Math.sin(-p.getX(i)*.5+T*.2+s.sd)*(a.w/2-p.getX(i))*.1);p.needsUpdate=true}}
 const V=new THREE.Vector3(),fgeo=new THREE.PlaneGeometry(1,1).rotateX(-PI/2),FP=[];
 for(let i=0;i<500;i++){const m=new THREE.Mesh(fgeo,new THREE.MeshBasicMaterial({map:spt,transparent:true,depthWrite:false}));m.visible=false;sc.add(m);FP.push(m)}
