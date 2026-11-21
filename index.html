@@ -59,9 +59,9 @@ const wr=a=>{while(a>PI)a-=2*PI;while(a<-PI)a+=2*PI;return a};
 const SP=[["Retro",-.3],["Ferma",0],["Avanti lento",.4],["Mezza vela",.7],["Tutta vela",1]];
 const F=[
 ["Repubblica di Venezia","#b3122a","#e8c24a",3,"#7a4a22",[["Galea sottile",46,7,1,1,90,1.15,.030,6],["Galea bastarda",60,8.5,2,1,140,1,.026,10],["Galeazza",76,12,3,1,210,.8,.019,16]]],
-["Repubblica di Genova","#f2efe6","#c8102e",2,"#6b4423",[["Leudo",40,9,1,0,85,1.1,.031,6],["Galea genovese",54,11,2,1,135,.95,.027,10],["Grande Carracca",74,19,3,0,235,.68,.017,18]]],
-["Repubblica di Pisa","#c8102e","#f2efe6",2,"#5e3b1e",[["Sagitta",42,8,1,1,80,1.2,.032,5],["Galea pisana",55,11,2,1,130,1,.026,10],["Cocca pisana",68,17,2,0,215,.72,.018,16]]],
-["Repubblica di Amalfi","#1f5fbf","#f2efe6",2,"#8a5a2b",[["Dromone leggero",43,9,1,1,85,1.1,.03,6],["Galea amalfitana",57,12,2,1,140,.95,.025,11],["Nave tonda",66,18,2,0,220,.7,.018,15]]],
+["Repubblica di Genova","#f2efe6","#c8102e",2,"#6b4423",[["Leudo",42,9.5,2,0,85,1.1,.031,6],["Galea genovese",58,8.5,2,1,135,.95,.027,10],["Grande Carracca",74,19,3,0,235,.68,.017,18]]],
+["Repubblica di Pisa","#c8102e","#f2efe6",2,"#5e3b1e",[["Sagitta",44,7.5,1,0,80,1.2,.032,5],["Galea pisana",60,9,1,1,130,1,.026,10],["Cocca pisana",68,17,3,0,215,.72,.018,16]]],
+["Repubblica di Amalfi","#1f5fbf","#f2efe6",2,"#8a5a2b",[["Dromone leggero",50,8,2,1,85,1.1,.03,6],["Galea amalfitana",62,9.5,2,1,140,.95,.025,11],["Nave tonda",66,18,1,0,220,.7,.018,15]]],
 ["Impero Ottomano","#b0121b","#f2efe6",5,"#4a2e1a",[["Fusta",38,7,1,1,75,1.25,.034,4],["Kadirga",58,10,2,1,135,1.05,.027,10],["Bastarda ottomana",76,14,3,1,215,.85,.02,16]]],
 ["Corona d'Aragona","#e8c24a","#c8102e",1,"#6e4a2a",[["Lleny",41,9,1,1,88,1.1,.03,6],["Galera catalana",56,11,2,1,138,1,.026,10],["Coca aragonese",70,18,3,0,230,.7,.017,17]]],
 ["Impero Bizantino","#6a1b9a","#e8c24a",4,"#503018",[["Pamphylos",42,8,1,1,82,1.15,.031,5],["Chelandion",57,10,2,1,132,1,.026,9],["Dromone imperiale",78,13,3,1,225,.78,.019,17]]],
@@ -153,7 +153,9 @@ function island(x,z,r,sd){const n=new THREE.Group(),gm=new THREE.PlaneGeometry(r
 IS.forEach(([x,z,r],i)=>island(x,z,r,i+1));
 const tex={};
 const ft={},st_={};function ftex(f){return ft[f[0]]||(ft[f[0]]=new THREE.CanvasTexture(flagCv(f,300,200)))}
-function stx(f){return st_[f[0]]||(st_[f[0]]=new THREE.CanvasTexture(flagCv(f,200,250)))}
+function cogCv(){const c=document.createElement('canvas');c.width=210;c.height=250;const x=c.getContext('2d');for(let i=0;i<7;i++){x.fillStyle=i%2?'#7a4650':'#f2efe6';x.fillRect(i*30,0,31,250)}x.strokeStyle='#0003';x.lineWidth=2;for(let i=1;i<4;i++){x.beginPath();x.moveTo(0,i*62);x.lineTo(210,i*62);x.stroke()}return c}
+function sailCv(cr){const c=document.createElement('canvas');c.width=200;c.height=250;const x=c.getContext('2d');x.fillStyle='#efe6cf';x.fillRect(0,0,200,250);if(cr){x.fillStyle='#c8201e';x.fillRect(80,0,40,250);x.fillRect(0,95,200,40)}x.strokeStyle='#0004';x.lineWidth=3;for(let i=1;i<6;i++){x.beginPath();x.moveTo(0,i*42);x.lineTo(200,i*42);x.stroke()}return c}
+function stx(f){return st_[f[0]]||(st_[f[0]]=new THREE.CanvasTexture(f[0].includes('Amalfi')?cogCv():f[0].includes('Genova')||f[0].includes('Pisa')?sailCv(f[0].includes('Genova')):flagCv(f,200,250)))}
 function mkFlag(f,w,h,s){const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h,8,3),new THREE.MeshBasicMaterial({map:ftex(f),side:THREE.DoubleSide}));s.flags.push({m,w});return m}
 const pgc={},pmat=new THREE.MeshPhongMaterial({vertexColors:true,flatShading:true});
 function personG(hex){if(pgc[hex])return pgc[hex];const parts=[[new THREE.CylinderGeometry(.55,.7,2.2,6).translate(0,1.1,0),new THREE.Color(hex)],[new THREE.SphereGeometry(.5,6,5).translate(0,2.6,0),new THREE.Color(0xe0b890)],[new THREE.SphereGeometry(.56,6,4,0,PI*2,0,PI/2).translate(0,2.75,0),new THREE.Color(0x8a8a8a)]],P=[],N=[],C=[],I=[];let o=0;
@@ -167,11 +169,12 @@ function sailTex(f){if(tex[f[0]])return tex[f[0]];const c=document.createElement
  if(p==4){x.lineWidth=36;x.beginPath();x.moveTo(0,0);x.lineTo(128,128);x.stroke()}
  if(p==5){x.beginPath();x.arc(64,64,38,0,7);x.fill();x.fillStyle=f[1];x.beginPath();x.arc(76,64,32,0,7);x.fill()}
  x.strokeStyle='#0005';x.lineWidth=6;x.strokeRect(0,0,128,128);return tex[f[0]]=new THREE.CanvasTexture(c)}
-function mkMesh(s){const[,L,Wd,M,Or,,,,G]=s.d,f=s.f,gr=new THREE.Group(),Hh=Wd*.6,top=Hh*.65;
+function mkMesh(s){const[,L,Wd,M,Or,,,,G]=s.d,f=s.f,gr=new THREE.Group(),Hh=Wd*.6,top=Hh*.65,K=shipKind(s);
  const sh=new THREE.Shape();sh.moveTo(L/2,0);sh.quadraticCurveTo(L*.2,Wd/2,-L/3,Wd/2);sh.quadraticCurveTo(-L/2,Wd/2,-L/2,Wd/4);sh.lineTo(-L/2,-Wd/4);sh.quadraticCurveTo(-L/2,-Wd/2,-L/3,-Wd/2);sh.quadraticCurveTo(L*.2,-Wd/2,L/2,0);
  const hg=new THREE.ExtrudeGeometry(sh,{depth:Hh,bevelEnabled:true,bevelThickness:1,bevelSize:.8,bevelSegments:2,curveSegments:10});hg.rotateX(-PI/2);
- const hm=new THREE.Mesh(hg,mat(f[4]));hm.position.y=-Hh*.35;gr.add(hm);
- const st=new THREE.Mesh(hg,mat(f[2]));st.scale.set(1.01,.07,1.04);st.position.y=Hh*.17;gr.add(st);
+ const hm=new THREE.Mesh(hg,mat(hullCol(s)));hm.position.y=-Hh*.35;gr.add(hm);
+ if(K=='lat'||K=='cck'){const yb=new THREE.Mesh(hg,mat(K=='lat'?0xd9b860:0xf2efe6));yb.scale.set(1.012,K=='lat'?.3:.55,1.04);yb.position.y=-Hh*.37;gr.add(yb)}
+ const st=new THREE.Mesh(hg,mat(K=='slp'?f[1]:f[2]));st.scale.set(1.01,.07,1.04);st.position.y=Hh*.17;gr.add(st);
  const dg=new THREE.ShapeGeometry(sh);dg.rotateX(-PI/2);const dk=new THREE.Mesh(dg,mat(0xb98a52));dk.scale.set(.88,1,.76);dk.position.y=top+.1;gr.add(dk);
  const bx_=(w,h,d,x,y,z,c)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));m.position.set(x,y,z);gr.add(m)};
  if(L>50)bx_(L*.17,Hh*.7,Wd*.7,-L*.4,top+Hh*.35,0,0x5a3a1c);
@@ -182,8 +185,9 @@ function mkMesh(s){const[,L,Wd,M,Or,,,,G]=s.d,f=s.f,gr=new THREE.Group(),Hh=Wd*.
  if(L>45){bx_(L*.1,1,Wd*.35,L*.08,top+.8,0,0x6b4a2a);bx_(L*.08,1,Wd*.3,-L*.12,top+.8,0,0x6b4a2a)}
  const bs=new THREE.Mesh(new THREE.CylinderGeometry(.4,.6,L*.28,5),mat(0x4a2e14));bs.rotation.z=-PI/2+.35;bs.position.set(L/2+L*.08,top+Hh*.3,0);gr.add(bs);
  for(let i=0;i<G/2;i++){const x=(G>2?i/(G/2-1)-.5:0)*L*.5;for(const sd of[-1,1]){const c=new THREE.Mesh(new THREE.CylinderGeometry(.7,.9,3,6),mat(0x151515));c.rotation.x=PI/2;c.position.set(x,top-1.2,sd*(Wd/2));gr.add(c)}}
- s.sails=[];s.oars=[];s.flags=[];const mh=L*.6,gal=f[0].includes('Venezia'),nO=Or?Math.floor(L/(gal?4.3:7)):0;
- if(gal)rigGalley(s,gr,top,Hh,L,Wd,M,f);else for(let m=0;m<M;m++){const x=M==1?L*.05:(m/(M-1)-.5)*L*.5+L*.05,sw=Wd*1.7,shh=mh*.7;
+ s.sails=[];s.oars=[];s.flags=[];const mh=L*.6,gal=K=='gal'||K=='gal2'||K=='drm'||K=='gal3',nO=Or?Math.floor(L/(gal?4.3:7)):0;
+ if(K=='slp')sloopRig(s,gr,top,Hh,L,Wd,f);else if(K=='gal'||K=='lat'||K=='gal2'||K=='drm'||K=='gal3')rigGalley(s,gr,top,Hh,L,Wd,M,f,K);else for(let m=0;m<M;m++){const x=M==1?L*.05:(m/(M-1)-.5)*L*.5+L*.05,sw=Wd*(K=='cog'?2.1:1.7),shh=mh*(K=='cog'?.55:.7);
+  if((K=='car'||K=='cck')&&m==0){lateenMast(s,gr,top,Hh,L,Wd,f,x,L*.5,{rev:0,col:0xefe9da,pen:2});continue}
   const mast=new THREE.Mesh(new THREE.CylinderGeometry(.5,.8,mh,6),mat(0x4a2e14));mast.position.set(x,top+mh/2,0);gr.add(mast);
   const pv=new THREE.Group();pv.position.set(x,top+mh*.6,0);
   const sg=new THREE.PlaneGeometry(sw,shh,6,3),pa=sg.attributes.position;for(let i=0;i<pa.count;i++)pa.setZ(i,Math.sin((pa.getX(i)/sw+.5)*PI)*sw*.1);
@@ -203,31 +207,88 @@ function mkMesh(s){const[,L,Wd,M,Or,,,,G]=s.d,f=s.f,gr=new THREE.Group(),Hh=Wd*.
  add(-L*.38,0,top+(L>50?Hh*.7:0),1,0);
  for(let i=0;i<4;i++)add(L*.3,(i%2?1:-1)*Wd*.15,top+(L>65?Hh*.5:0),1,0);
  add(-L*.1,Wd*.1,top+1,1,0);add(L*.1,-Wd*.1,top+1,1,0);
- if(gal)galExtra(gr,L,Wd,Hh,top,f);
+ if(K)galExtra(gr,L,Wd,Hh,top,f,K,s);
  const lt=new THREE.Mesh(new THREE.SphereGeometry(1.3,6,6),new THREE.MeshBasicMaterial({color:0xffd070}));lt.position.set(-L/2-1,top+Hh*.9+(L>50?Hh*.7:0),Wd*.3);gr.add(lt);
  s.g=gr;sc.add(gr)}
-function rigGalley(s,gr,top,Hh,L,Wd,M,f){const yl=L*(M==1?.72:M==2?.66:.6),xs=M==1?[.04]:M==2?[.2,-.2]:[.3,0,-.3];
- for(const fx of xs){const x=fx*L,pv=new THREE.Group();pv.position.set(x,top,0);
-  const A=[.36*yl,.1*yl],B=[-.42*yl,.62*yl],C=[-.38*yl,.08*yl],n=5,Pp=[],I=[],ix=(i,j)=>{let k=0;for(let q=0;q<i;q++)k+=n-q+1;return k+j};
-  for(let i=0;i<=n;i++)for(let j=0;j<=n-i;j++){const u=i/n,v=j/n;Pp.push(A[0]+(B[0]-A[0])*u+(C[0]-A[0])*v,A[1]+(B[1]-A[1])*u+(C[1]-A[1])*v,Hh*.5*Math.min(1,8*v*(1-u-v)))}
-  for(let i=0;i<n;i++)for(let j=0;j<n-i;j++){I.push(ix(i,j),ix(i+1,j),ix(i,j+1));if(j<n-i-1)I.push(ix(i+1,j),ix(i+1,j+1),ix(i,j+1))}
-  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(Pp,3));g.setIndex(I);g.computeVertexNormals();
-  const sm=new THREE.Mesh(g,new THREE.MeshPhongMaterial({color:0xeadfc4,side:THREE.DoubleSide,flatShading:true}));pv.add(sm);
-  const dx=B[0]-A[0],dy=B[1]-A[1],yd=new THREE.Mesh(new THREE.CylinderGeometry(.55,.4,Math.hypot(dx,dy),5),mat(0x6a4a2a));yd.position.set((A[0]+B[0])/2,(A[1]+B[1])/2,0);yd.rotation.z=Math.atan2(-dx,dy);pv.add(yd);
-  const pwd=L*.035,pln=L*.2,tg=new THREE.BufferGeometry();tg.setAttribute('position',new THREE.Float32BufferAttribute([B[0],B[1],-pwd,B[0],B[1],pwd,B[0],B[1]-pln,0],3));
-  pv.add(new THREE.Mesh(tg,new THREE.MeshBasicMaterial({color:f[1],side:THREE.DoubleSide})));gr.add(pv);
-  const mh=yl*.52,mast=new THREE.Mesh(new THREE.CylinderGeometry(.5,.8,mh,6),mat(0x4a2e14));mast.position.set(x,top+mh/2,0);gr.add(mast);
-  const pts=[];for(const sd of[-1,1])for(const d2 of[-2,0,2])pts.push(x,top+mh*.92,0,x+d2*2,top+.5,sd*Wd*.45);pts.push(x,top+mh,0,L/2-1,top+Hh*.8,0,x,top+mh,0,-L/2+1,top+Hh*.8,0);
-  gr.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(pts,3)),new THREE.LineBasicMaterial({color:0x2a1a0c})));
-  const fl=mkFlag(f,10,6.5,s);fl.position.set(x-5,top+mh+3,0);gr.add(fl);
-  s.sails.push({p:pv,m:sm,w:yl,h:yl*.6,tri:[A[0],A[1],B[0],B[1],C[0],C[1]],bz:Hh*.5})}}
-function galExtra(gr,L,Wd,Hh,top,f){const bx=(w,h,d,x,y,z,c)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));m.position.set(x,y,z);gr.add(m)};
- const sp=new THREE.Mesh(new THREE.ConeGeometry(.9,L*.2,5),mat(0x3a2410));sp.rotation.z=-PI/2;sp.position.set(L/2+L*.08,top-Hh*.05,0);gr.add(sp);
- bx(L*.62,.7,Wd*.16,-L*.02,top+1.3,0,0x4a2e14);bx(L*.14,Hh*.35,Wd*.6,L*.38,top+Hh*.17,0,0x5a3a1c);
- bx(L*.2,Hh*.9,Wd*.9,-L*.4,top+Hh*.45,0,0x5a3a1c);bx(L*.21,.6,Wd*.95,-L*.4,top+Hh*.92,0,f[2]);
- for(const sx of[-1,1])for(const sz of[-1,1]){const p=new THREE.Mesh(new THREE.CylinderGeometry(.25,.25,Hh*1.1,4),mat(0x3a2410));p.position.set(-L*.4+sx*L*.09,top+Hh*1.45,sz*Wd*.4);gr.add(p)}
- bx(L*.22,.7,Wd,-L*.4,top+Hh*2,0,f[1]);bx(.5,1.8,Wd,-L*.4-L*.11,top+Hh*1.75,0,f[2]);
- for(const sd of[-1,1])bx(L*.5,.5,.5,-L*.05,Hh*.28,sd*(Wd/2+.8),f[1])}
+function shipKind(s){const f=s.f[0],n=s.d[0];if(f.includes('Venezia'))return'gal';if(f.includes('Genova'))return n=='Galea genovese'?'gal':n=='Leudo'?'lat':'car';if(f.includes('Pisa'))return n=='Sagitta'?'slp':n=='Galea pisana'?'gal2':'cck';if(f.includes('Amalfi'))return n=='Dromone leggero'?'drm':n=='Galea amalfitana'?'gal3':'cog';return''}
+function hullCol(s){const n=s.d[0];return n=='Galea genovese'?0x1b1d26:n=='Leudo'?0x1a1a1a:n=='Grande Carracca'?0x8d7b5e:n=='Sagitta'?0xe9e4d6:n=='Galea pisana'?0xc98a4a:n=='Cocca pisana'?0x9a6a38:n=='Dromone leggero'?0xc9a06a:n=='Galea amalfitana'?0xc79a3a:n=='Nave tonda'?0x2a1e14:s.f[4]}
+const ptx={};function penTex(f){if(ptx[f[0]])return ptx[f[0]];const c=document.createElement('canvas');c.width=64;c.height=160;const x=c.getContext('2d');x.fillStyle=f[1];x.fillRect(0,0,64,160);x.fillStyle=f[2];x.fillRect(28,0,8,160);x.fillRect(0,34,64,8);return ptx[f[0]]=new THREE.CanvasTexture(c)}
+let stT=null;function stripeTex(){if(stT)return stT;const c=document.createElement('canvas');c.width=128;c.height=64;const x=c.getContext('2d');for(let i=0;i<10;i++){x.fillStyle=i%2?'#f4ecd2':'#e9c44c';x.fillRect(i*12.8,0,13,64)}return stT=new THREE.CanvasTexture(c)}
+function triSail(A,B,C,bz,col,tex){const n=5,Pp=[],I=[],U=[],ix=(i,j)=>{let k=0;for(let q=0;q<i;q++)k+=n-q+1;return k+j};
+ for(let i=0;i<=n;i++)for(let j=0;j<=n-i;j++){const u=i/n,v=j/n,x=A[0]+(B[0]-A[0])*u+(C[0]-A[0])*v,y=A[1]+(B[1]-A[1])*u+(C[1]-A[1])*v;Pp.push(x,y,bz*Math.min(1,8*v*(1-u-v)));U.push(x,y)}
+ for(let i=0;i<n;i++)for(let j=0;j<n-i;j++){I.push(ix(i,j),ix(i+1,j),ix(i,j+1));if(j<n-i-1)I.push(ix(i+1,j),ix(i+1,j+1),ix(i,j+1))}
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(Pp,3));
+ if(tex){const mn=Math.min(A[0],B[0],C[0]),mx=Math.max(A[0],B[0],C[0]),my=Math.max(A[1],B[1],C[1]),uv=[];for(let i=0;i<U.length;i+=2)uv.push((U[i]-mn)/(mx-mn),U[i+1]/my);g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2))}
+ g.setIndex(I);g.computeVertexNormals();
+ return new THREE.Mesh(g,new THREE.MeshPhongMaterial(tex?{map:tex,side:THREE.DoubleSide,flatShading:true}:{color:col,side:THREE.DoubleSide,flatShading:true}))}
+function lateenMast(s,gr,top,Hh,L,Wd,f,x,yl,o){const sg=o.rev?-1:1,pv=new THREE.Group(),sh=o.sh||[[.36,.1],[-.42,.62],[-.38,.08]];pv.position.set(x,top,0);
+ const A=[sh[0][0]*yl*sg,sh[0][1]*yl],B=[sh[1][0]*yl*sg,sh[1][1]*yl],C=[sh[2][0]*yl*sg,sh[2][1]*yl];
+ const sm=triSail(A,B,C,Hh*.5,o.col,o.tex);pv.add(sm);
+ const dx=B[0]-A[0],dy=B[1]-A[1],yd=new THREE.Mesh(new THREE.CylinderGeometry(.55,.4,Math.hypot(dx,dy),5),mat(0x6a4a2a));yd.position.set((A[0]+B[0])/2,(A[1]+B[1])/2,0);yd.rotation.z=Math.atan2(-dx,dy);pv.add(yd);
+ if(o.pen<2){const pwd=L*.035,pln=L*(o.pen?.24:.2),tg=new THREE.BufferGeometry();tg.setAttribute('position',new THREE.Float32BufferAttribute([B[0],B[1],-pwd,B[0],B[1],pwd,B[0],B[1]-pln,0],3));tg.setAttribute('uv',new THREE.Float32BufferAttribute([0,1,1,1,.5,0],2));
+  pv.add(new THREE.Mesh(tg,new THREE.MeshBasicMaterial(o.pen?{map:penTex(f),side:THREE.DoubleSide}:{color:f[1],side:THREE.DoubleSide})))}
+ gr.add(pv);
+ const mh=yl*(o.mh||.52),mast=new THREE.Mesh(new THREE.CylinderGeometry(.5,.8,mh,6),mat(0x4a2e14));mast.position.set(x,top+mh/2,0);gr.add(mast);
+ const pts=[];for(const sd of[-1,1])for(const d2 of[-2,0,2])pts.push(x,top+mh*.92,0,x+d2*2,top+.5,sd*Wd*.45);pts.push(x,top+mh,0,L/2-1,top+Hh*.8,0,x,top+mh,0,-L/2+1,top+Hh*.8,0);
+ gr.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(pts,3)),new THREE.LineBasicMaterial({color:0x2a1a0c})));
+ const fl=mkFlag(f,10,6.5,s);fl.position.set(x-5,top+mh+3,0);gr.add(fl);
+ s.sails.push({p:pv,m:sm,w:yl,h:yl*.6,tri:[A[0],A[1],B[0],B[1],C[0],C[1]],bz:Hh*.5})}
+function sloopRig(s,gr,top,Hh,L,Wd,f){const x=L*.1,mh=L*.95,mast=new THREE.Mesh(new THREE.CylinderGeometry(.45,.7,mh,6),mat(0xb88a4a));mast.position.set(x,top+mh/2,0);gr.add(mast);
+ const sl=(A,B,C,col)=>{const pv=new THREE.Group();pv.position.set(x,top,0);const sm=triSail(A,B,C,Hh*.6,col);pv.add(sm);gr.add(pv);s.sails.push({p:pv,m:sm,w:L,h:mh,tri:[A[0],A[1],B[0],B[1],C[0],C[1]],bz:Hh*.6});return pv};
+ const pv=sl([0,1.3],[0,mh*.97],[-L*.36,1.9],0xefe9da),bm=new THREE.Mesh(new THREE.BoxGeometry(L*.36,.5,.5),mat(0xb88a4a));bm.position.set(-L*.18,1.6,0);pv.add(bm);
+ sl([L*.38,1.3],[.4,mh*.93],[L*.04,2.4],0xf6f1e4);
+ const pts=[];for(const sd of[-1,1])for(const d2 of[-1,1])pts.push(x,top+mh*.85,0,x+d2*3,top+.5,sd*Wd*.45);pts.push(x,top+mh,0,L/2-1,top+Hh*.8,0,x,top+mh,0,-L/2+1,top+Hh*.8,0);
+ gr.add(new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(pts,3)),new THREE.LineBasicMaterial({color:0x2a1a0c})));
+ const fl=mkFlag(f,9,6,s);fl.position.set(x-4.5,top+mh+3,0);gr.add(fl)}
+function rigGalley(s,gr,top,Hh,L,Wd,M,f,K){const g=f[0].includes('Genova');let xs,yl,o,ys=null;
+ if(K=='lat'){xs=[.12,-.3];yl=L*.7;o={rev:0,col:0xc9b087,pen:2}}
+ else if(K=='gal2'){xs=[.07];yl=L;o={rev:0,col:0xf4ecd2,pen:2,tex:stripeTex(),sh:[[.16,.055],[-.205,.57],[-.235,.03]],mh:.36}}
+ else if(K=='drm'){xs=[.1,-.22];yl=L*.8;ys=[L*.82,L*.55];o={rev:0,col:0xe8dcc0,pen:2}}
+ else if(K=='gal3'){xs=[0];yl=L;o={rev:0,col:0xf2eee0,pen:2,sh:[[.26,.04],[-.4,.5],[-.17,.06]],mh:.4}}
+ else if(g){xs=[.3,0];yl=L*.7;o={rev:1,col:0xc9b087,pen:1}}
+ else{yl=L*(M==1?.72:M==2?.66:.6);xs=M==1?[.04]:M==2?[.2,-.2]:[.3,0,-.3];o={rev:0,col:0xeadfc4,pen:0}}
+ xs.forEach((fx,i)=>lateenMast(s,gr,top,Hh,L,Wd,f,fx*L,ys?ys[i]:yl,o))}
+function galExtra(gr,L,Wd,Hh,top,f,K,s){const bx=(w,h,d,x,y,z,c)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));m.position.set(x,y,z);gr.add(m)};
+ if(K=='gal'){const V=f[0].includes('Venezia'),rc=V?f[1]:f[2],gd=V?f[2]:0xc9a24a;
+  const sp=new THREE.Mesh(new THREE.ConeGeometry(.9,L*.2,5),mat(0x3a2410));sp.rotation.z=-PI/2;sp.position.set(L/2+L*.08,top-Hh*.05,0);gr.add(sp);
+  bx(L*.62,.7,Wd*.16,-L*.02,top+1.3,0,0x4a2e14);bx(L*.14,Hh*.35,Wd*.6,L*.38,top+Hh*.17,0,0x5a3a1c);
+  bx(L*.2,Hh*.9,Wd*.9,-L*.4,top+Hh*.45,0,0x5a3a1c);bx(L*.21,.6,Wd*.95,-L*.4,top+Hh*.92,0,gd);
+  if(V){for(const sx of[-1,1])for(const sz of[-1,1]){const p=new THREE.Mesh(new THREE.CylinderGeometry(.25,.25,Hh*1.1,4),mat(0x3a2410));p.position.set(-L*.4+sx*L*.09,top+Hh*1.45,sz*Wd*.4);gr.add(p)}
+   bx(L*.22,.7,Wd,-L*.4,top+Hh*2,0,rc);bx(.5,1.8,Wd,-L*.4-L*.11,top+Hh*1.75,0,gd)}
+  else{for(let i=0;i<6;i++){const t=new THREE.Mesh(new THREE.TorusGeometry(Wd*.46,.28,4,10,PI),mat(0xc9a24a));t.rotation.y=PI/2;t.position.set(-L*.5+L*.06+i*L*.035,top+Hh*.95,0);gr.add(t)}
+   for(const sd of[-1,1])bx(L*.2,.5,.4,-L*.4,top+Hh*1.05,sd*Wd*.45,rc)}
+  for(const sd of[-1,1])bx(L*.5,.5,.5,-L*.05,Hh*.28,sd*(Wd/2+.8),rc)}
+ else if(K=='lat'){bx(L*.2,1.3,Wd*.5,L*.06,top+.8,0,0x8a5a2a);bx(L*.1,1.1,Wd*.4,-L*.1,top+.7,0,0x8a5a2a);bx(L*.12,1.8,Wd*.55,-L*.32,top+1,0,0x4a2e1a);
+  for(const sd of[-1,1])bx(L*.8,.9,.3,-L*.02,top+.7,sd*Wd*.42,0xe8dcc0)}
+ else if(K=='slp'){bx(L*.3,Hh*.55,Wd*.55,-L*.05,top+Hh*.27,0,0xf2efe6);bx(L*.28,.7,Wd*.57,-L*.05,top+Hh*.35,0,0x2a3a4a);
+  for(const sd of[-1,1]){bx(L*.8,.25,.25,-L*.02,top+2.6,sd*Wd*.45,0xcfc8b8);for(let i=0;i<7;i++)bx(.25,2.6,.25,-L*.38+i*L*.12,top+1.3,sd*Wd*.45,0xcfc8b8)}}
+ else if(K=='gal2'){const sp=new THREE.Mesh(new THREE.ConeGeometry(.8,L*.2,5),mat(0xa56a2e));sp.rotation.z=-PI/2;sp.position.set(L/2+L*.08,top-Hh*.1,0);gr.add(sp);
+  const hk=new THREE.Mesh(new THREE.TorusGeometry(L*.09,.6,5,10,PI/2),mat(0xc98a4a));hk.rotation.z=PI/2;hk.position.set(-L/2+L*.09,top,0);gr.add(hk);
+  for(const sd of[-1,1]){bx(L*.82,.4,.4,-L*.02,top+3.2,sd*Wd*.45,0x8a3a2a);bx(L*.6,.5,.4,-L*.05,Hh*.28,sd*(Wd/2+.7),f[1]);for(let i=0;i<9;i++)bx(.35,3.2,.35,-L*.38+i*L*.085,top+1.6,sd*Wd*.45,0x6a3a1a)}
+  const pole=new THREE.Mesh(new THREE.CylinderGeometry(.35,.35,L*.2,5),mat(0x3a2410));pole.position.set(L/2-1,top+L*.1,0);gr.add(pole);const fw=L*.12,bf=mkFlag(f,fw,L*.08,s);bf.position.set(L/2-1-fw/2,top+L*.17,0);gr.add(bf)}
+ else if(K=='drm'){const sp=new THREE.Mesh(new THREE.ConeGeometry(.8,L*.22,5),mat(0x3a2410));sp.rotation.z=-PI/2;sp.position.set(L/2+L*.09,top-Hh*.1,0);gr.add(sp);
+  const hk=new THREE.Mesh(new THREE.TorusGeometry(L*.1,.6,5,10,PI/2),mat(0xc9a06a));hk.rotation.z=PI/2;hk.position.set(-L/2+L*.1,top,0);gr.add(hk);
+  const tf=new THREE.Mesh(new THREE.ConeGeometry(.9,4,5),mat(0xf2efe6));tf.position.set(-L/2+L*.1,top+L*.1+2,0);gr.add(tf);
+  bx(L*.7,.6,Wd*.15,0,top+1,0,0x5a3a1c);bx(L*.16,2,Wd*.5,L*.15,top+1.1,0,0x6a4a2a);
+  for(const sd of[-1,1])bx(L*.7,.35,.35,0,top+2.8,sd*Wd*.45,0xcaa86a)}
+ else if(K=='gal3'){const sp=new THREE.Mesh(new THREE.ConeGeometry(.9,L*.2,5),mat(0x3a2410));sp.rotation.z=-PI/2+.15;sp.position.set(L/2+L*.08,top-Hh*.05,0);gr.add(sp);
+  bx(L*.2,Hh*1,Wd*.9,-L*.4,top+Hh*.5,0,0x8a5a22);bx(L*.21,.6,Wd*.92,-L*.4,top+Hh*1,0,0xc9a24a);bx(L*.12,Hh*.5,Wd*.8,-L*.43,top+Hh*1.3,0,0x6a4a22);
+  bx(L*.2,1.2,Wd*.3,L*.02,top+1.6,0,0xb88a52);bx(L*.16,.4,Wd*.22,L*.02,top+2.3,0,0x6a4a22);
+  for(const sd of[-1,1]){bx(L*.7,.35,.35,-L*.02,top+3,sd*Wd*.45,0xcaa86a);
+   for(const[lx,ly]of[[-L*.47,Hh*1.8],[L*.38,Hh*.9]]){const lt=new THREE.Mesh(new THREE.SphereGeometry(1,6,6),new THREE.MeshBasicMaterial({color:0xffd070}));lt.position.set(lx,top+ly,sd*Wd*.4);gr.add(lt)}}
+  const px=-L*.32,hh=L*.32,pole=new THREE.Mesh(new THREE.CylinderGeometry(.4,.5,hh,5),mat(0x4a2e14));pole.position.set(px,top+hh/2,0);gr.add(pole);
+  const tg=new THREE.BufferGeometry();tg.setAttribute('position',new THREE.Float32BufferAttribute([px,top+hh,-L*.03,px,top+hh,L*.03,px,top+hh-L*.2,0],3));tg.setAttribute('uv',new THREE.Float32BufferAttribute([0,1,1,1,.5,0],2));
+  gr.add(new THREE.Mesh(tg,new THREE.MeshBasicMaterial({map:penTex(f),side:THREE.DoubleSide})))}
+ else if(K=='cog'){const st=new THREE.Mesh(new THREE.BoxGeometry(1.4,Hh*1.7,.8),mat(0x2a1e14));st.position.set(L/2-.5,top+Hh*.35,0);st.rotation.z=-.25;gr.add(st);
+  bx(1.4,Hh*1.2,.8,-L/2+.5,top+Hh*.2,0,0x2a1e14);bx(L*.26,Hh*.85,Wd*.96,-L*.35,top+Hh*.42,0,0x2a1e14);bx(L*.26,.5,Wd*.98,-L*.35,top+Hh*.9,0,0x1a1208);bx(L*.12,Hh*.6,Wd*.8,L*.38,top+Hh*.3,0,0x2a1e14);bx(L*.22,.4,Wd*.7,L*.02,top+Hh*.85,0,0xe8dcc0);
+  const cols=[0xc8201e,0x1f5fbf,0xf2efe6,0xe8c24a,0x2f7a62,0xc8201e];
+  for(const sd of[-1,1]){for(let i=0;i<6;i++)bx(1.5,1.7,.3,-L*.45+i*L*.045,top+Hh*.6,sd*(Wd*.48+.3),cols[i]);for(const h of[.15,.35])bx(L*.8,.4,.35,0,Hh*h,sd*(Wd/2+.7),0x1a1208)}}
+ else if(K=='cck'){bx(L*.22,Hh*1.2,Wd*.85,-L*.37,top+Hh*.6,0,0x8a5a2e);bx(L*.221,.6,Wd*.86,-L*.37,top+Hh*.9,0,0xf2efe6);bx(L*.14,Hh*.6,Wd*.7,-L*.4,top+Hh*1.5,0,0x8a5a2e);bx(L*.12,Hh*.6,Wd*.8,L*.36,top+Hh*.3,0,0x8a5a2e);
+  for(const sd of[-1,1]){bx(L*.62,.6,.4,0,Hh*.38,sd*(Wd/2+.75),0xf2efe6);bx(L*.62,.6,.4,0,Hh*.1,sd*(Wd/2+.75),0xf2efe6)}
+  for(const sd of[-1,1]){const lt=new THREE.Mesh(new THREE.SphereGeometry(1,6,6),new THREE.MeshBasicMaterial({color:0xffd070}));lt.position.set(-L*.5,top+Hh*1.9,sd*Wd*.3);gr.add(lt)}}
+ else{bx(L*.2,Hh*1.1,Wd*.85,-L*.38,top+Hh*.55,0,0x6a4a28);bx(L*.14,Hh*.8,Wd*.7,-L*.42,top+Hh*1.5,0,0x6a4a28);bx(L*.205,.5,Wd*.87,-L*.38,top+Hh*1.12,0,0x2f7a62);bx(L*.145,.5,Wd*.72,-L*.42,top+Hh*1.92,0,0x2f7a62);
+  bx(L*.16,Hh*.9,Wd*.8,L*.34,top+Hh*.45,0,0x6a4a28);bx(L*.17,.5,Wd*.82,L*.34,top+Hh*.92,0,0x2f7a62);
+  for(const sd of[-1,1]){const lt=new THREE.Mesh(new THREE.SphereGeometry(1.1,6,6),new THREE.MeshBasicMaterial({color:0xffd070}));lt.position.set(-L*.5,top+Hh*1.6,sd*Wd*.4);gr.add(lt)}}}
 function addHit(s,lx,ly,r){const[,L,Wd]=s.d,Hh=Wd*.6,sd=ly>0?1:-1,e=Wd/2*(lx>L*.2?Math.max(.15,(L/2-lx)/(L*.3)):lx<-L/3?.7:1),y=Hh*(R()*.4);
  for(const[rr,c,o]of[[r*1.9,0x4a2a10,.1],[r,0,.2]]){const m=new THREE.Mesh(new THREE.CircleGeometry(rr+1,10),new THREE.MeshBasicMaterial({color:c,side:THREE.DoubleSide}));m.position.set(lx,y,sd*(e+o));m.rotation.y=sd>0?0:PI;s.g.add(m)}
  if(R()<.7&&s.sails.length){const a=s.sails[R()*s.sails.length|0],x=(R()-.5)*a.w*.8,m=new THREE.Mesh(new THREE.CircleGeometry(1.5+R()*2,8),new THREE.MeshBasicMaterial({color:0x100800,side:THREE.DoubleSide}));if(a.tri){let u=R(),v=R();if(u+v>1){u=1-u;v=1-v}const t=a.tri;m.position.set(t[0]+(t[2]-t[0])*u+(t[4]-t[0])*v,t[1]+(t[3]-t[1])*u+(t[5]-t[1])*v,a.bz*Math.min(1,8*v*(1-u-v))+.3)}else m.position.set(x,(R()-.5)*a.h*.7,Math.sin((x/a.w+.5)*PI)*a.w*.1+.3);a.m.add(m)}}
@@ -355,7 +416,7 @@ pvc.onwheel=e=>{e.preventDefault();pdist=cl(pdist+e.deltaY*.002,1.1,3)};
 function setPreview(f,d){if(pvS)psc.remove(pvS.g);pvS={f,d,team:0,x:0,y:0,a:0,v:0,lvl:3,hp:d[5],mx:d[5],rl:[0,0],sink:0,tin:0,sd:1};mkMesh(pvS);psc.add(pvS.g);
  if(!pdisc){pdisc=new THREE.Mesh(new THREE.CircleGeometry(1,40).rotateX(-PI/2),new THREE.MeshBasicMaterial({color:0x2a6f8a,transparent:true,opacity:.4}));psc.add(pdisc)}pdisc.scale.setScalar(d[1]*.85);pdisc.position.y=-.4}
 function pvTick(){if(!pvS||$('m').style.display=='none')return;const w=pvc.clientWidth,h=pvc.clientHeight;if(w&&(w!=pw||h!=ph_)){pren.setSize(w,h,false);pcam.aspect=w/h;pcam.updateProjectionMatrix();pw=w;ph_=h}
- const L=pvS.d[1],D=L*pdist;if(pdrag===null)pyaw+=.006;pcam.position.set(Math.cos(pyaw)*Math.cos(ppit)*D,Math.sin(ppit)*D+L*.15,Math.sin(pyaw)*Math.cos(ppit)*D);pcam.lookAt(0,L*.18,0);
+ const L=pvS.d[1],H=pvS.d[0]=='Sagitta'?L:L*.6,D=Math.max(L*pdist,H*1.9);if(pdrag===null)pyaw+=.006;pcam.position.set(Math.cos(pyaw)*Math.cos(ppit)*D,Math.sin(ppit)*D+L*.15,Math.sin(pyaw)*Math.cos(ppit)*D);pcam.lookAt(0,H*.35,0);
  const sw=Math.sin(T*.08);
  for(const a of pvS.flags){const p=a.m.geometry.attributes.position;for(let i=0;i<p.count;i++)p.setZ(i,Math.sin(-p.getX(i)*.5+T*.2)*(a.w/2-p.getX(i))*.1);p.needsUpdate=true}
  pvS.oars.forEach(o=>{const sd=o.userData.sd;o.rotation.set(-sd*(.12+.2*Math.max(0,Math.cos(T*.08))),sd*sw*.4,0)});
