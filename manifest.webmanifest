@@ -1,0 +1,30 @@
+{
+ "name": "Battaglie Navali 1200–1400",
+ "short_name": "Navali",
+ "description": "Scontri navali nel Medioevo: 8 marine, 24 navi, 6 contro 6.",
+ "start_url": "./index.html",
+ "scope": "./",
+ "display": "fullscreen",
+ "display_override": [
+  "fullscreen",
+  "standalone"
+ ],
+ "orientation": "landscape",
+ "background_color": "#0b2533",
+ "theme_color": "#0b2533",
+ "lang": "it",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any maskable"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}
