@@ -305,18 +305,19 @@ function rs(){ren.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHei
 const mat=c=>new THREE.MeshPhongMaterial({color:c,flatShading:true});
 const wv=(x,z)=>Math.sin(x*.03+T*.03)*.8+Math.cos(z*.025+T*.022)*.8+Math.sin((x+z)*.06+T*.05)*.3;
 const wg=new THREE.PlaneGeometry(3000,3000,90,90);wg.rotateX(-PI/2);const wp=wg.attributes.position,bx=Float32Array.from(wp.array),wc=new Float32Array(wp.count*3);wg.setAttribute('color',new THREE.BufferAttribute(wc,3));
-const water=new THREE.Mesh(wg,new THREE.MeshPhongMaterial({vertexColors:true,flatShading:true,shininess:80,specular:0x99bbcc}));sc.add(water);
+const water=new THREE.Mesh(wg,new THREE.MeshPhongMaterial({vertexColors:true,flatShading:true,shininess:320,specular:0x6f8a9a}));sc.add(water);
 const IS=[[0,-520,90],[-250,520,110],[300,430,80],[-600,-700,130],[600,700,120],[100,1050,150],[-850,900,100],[850,-850,140],[-100,-1050,120],[0,0,55],[-450,150,70],[450,-150,70]];
 const pineG=new THREE.ConeGeometry(3.2,13,6),rockG=new THREE.DodecahedronGeometry(3.5),hsG=new THREE.BoxGeometry(7,5,7),rfG=new THREE.ConeGeometry(6,4,4);
 const ISG=[];
 function island(x,z,r,sd){const n=new THREE.Group(),gm=new THREE.PlaneGeometry(r*2.6,r*2.6,30,30);gm.rotateX(-PI/2);
  const p=gm.attributes.position,col=new Float32Array(p.count*3),pk=r*(.22+.05*(sd%3));
  const hf=(a,b)=>{const ang=Math.atan2(b,a),rim=1+.12*Math.sin(ang*3+sd)+.06*Math.sin(ang*7+sd*2),k=Math.max(0,1-Math.hypot(a,b)/(r*rim));return Math.pow(k,.9)*pk*(1+.3*Math.sin(a*.09+sd)*Math.cos(b*.11-sd))-6*(1-Math.min(1,k*4))};
- for(let i=0;i<p.count;i++){const h=hf(p.getX(i),p.getZ(i));p.setY(i,h);const v=R()*.06,c=h<-.5?[.55,.78,.72]:h<2.5?[.86,.78,.55]:h<pk*.6?[.3+v,.52+v,.22]:h<pk*.85?[.4+v,.38+v,.3]:[.62,.6,.56];col[i*3]=c[0];col[i*3+1]=c[1];col[i*3+2]=c[2]}
+ for(let i=0;i<p.count;i++){const h=hf(p.getX(i),p.getZ(i));p.setY(i,h);const v=R()*.06,q=Math.sin(p.getX(i)*.19+sd)*Math.cos(p.getZ(i)*.23-sd*2),rk=[.5+v,.47+v,.42+v],c=h<-.5?[.5,.7,.68]:h<2.5?(q>-.15?rk:[.82,.74,.52]):h<pk*.6?(q>.5?rk:[.3+v,.52+v,.22]):h<pk*.85?[.4+v,.38+v,.3]:[.62,.6,.56];col[i*3]=c[0];col[i*3+1]=c[1];col[i*3+2]=c[2]}
  gm.setAttribute('color',new THREE.BufferAttribute(col,3));gm.computeVertexNormals();n.add(new THREE.Mesh(gm,new THREE.MeshPhongMaterial({vertexColors:true,flatShading:true})));
  const put=(g,c,a,b,s,dy)=>{const h=hf(a,b);if(h<2.6)return null;const m=new THREE.Mesh(g,mat(c));m.position.set(a,h+dy,b);m.scale.setScalar(s);n.add(m);return m};
  for(let i=0;i<26;i++){const a=R()*6.28,d=R()*r*.8;put(pineG,R()<.3?0x1f5a28:0x2d6a2a,Math.cos(a)*d,Math.sin(a)*d,.7+R()*.7,5)}
  for(let i=0;i<8;i++){const a=R()*6.28,d=r*(.55+R()*.3);put(rockG,0x7d7a70,Math.cos(a)*d,Math.sin(a)*d,.5+R()*.8,0)}
+ for(let i=0;i<Math.min(22,6+r/12|0);i++){const a=R()*6.28,d=r*(.72+R()*.3),x=Math.cos(a)*d,z=Math.sin(a)*d,h=hf(x,z);if(h<-2)continue;const m=new THREE.Mesh(rockG,mat(R()<.5?0x7d7a70:0x645f55));m.position.set(x,Math.max(h,0)+.4,z);m.scale.set(.7+R()*1.3,.5+R()*.9,.7+R()*1.3);m.rotation.y=R()*6;n.add(m)}
  if(sd%2)for(let i=0;i<4;i++){const a=i*1.57+sd,d=r*.3,m=put(hsG,0xe3d3a8,Math.cos(a)*d,Math.sin(a)*d,1,2.5);if(m){const q=new THREE.Mesh(rfG,mat(0xa8442a));q.position.y=4;q.rotation.y=PI/4;m.add(q)}}
  const tw=put(new THREE.CylinderGeometry(3,4,22,8),0xcfc4a0,r*.1,-r*.1,1,10);if(tw){const q=new THREE.Mesh(new THREE.ConeGeometry(5,7,8),mat(0xa8442a));q.position.y=14;tw.add(q)}
  n.position.set(x,0,z);sc.add(n);ISG.push(n)}
@@ -617,7 +618,8 @@ function loop(){T++;pvTick();
   wa+=Math.sin(T*.002)*.0008;ws=.75+.25*Math.sin(T*.0011);
   S.forEach(upd);
   if(T%2==0)for(const s of S)if(s.hp>0&&Math.abs(s.v)>.25){const c=Math.cos(s.a),sn=Math.sin(s.a),L=s.d[1],W=s.d[2],q=Math.min(1,Math.abs(s.v)/1.4),fp=(lx,ly,z,l,o)=>foam(s.x+lx*c-ly*sn,s.y+lx*sn+ly*c,z,l,o*q);
-   fp(-L*.5,(R()-.5)*W*.5,W*1.3,90,.6);fp(-L*.42,(R()-.5)*W,W*.9,60,.45);fp(L*.42,W*.45,W*.7,30,.5);fp(L*.42,-W*.45,W*.7,30,.5);fp(0,(R()<.5?-1:1)*W*.55,W*.5,40,.35)}
+   fp(-L*.5,(R()-.5)*W*.5,W*1.3,90,.6);fp(-L*.42,(R()-.5)*W,W*.9,60,.45);fp(L*.42,W*.45,W*.8,32,.6);fp(L*.42,-W*.45,W*.8,32,.6);fp(L*.5,0,W*.55,26,.65);fp(0,(R()<.5?-1:1)*W*.55,W*.5,40,.35);
+   if(s.oars.length&&Math.cos(s.oph||0)>.2)for(let k=0;k<3;k++){const o=s.oars[R()*s.oars.length|0],ox=o.position.x,oy=o.userData.sd*(W/2+L*.1);fp(ox,oy,W*.38,34,.7)}}
   for(const f of FM){f.t--;const u=f.t/f.l;f.m.position.set(f.x,wv(f.x,f.y)+1,f.y);f.m.scale.setScalar(f.sz*(1+(1-u)*.9));f.m.material.opacity=f.op*u;if(f.t<=0)f.m.visible=false}
   FM=FM.filter(f=>f.t>0);
   for(let i=0;i<S.length;i++)for(let j=i+1;j<S.length;j++){const a=S[i],b=S[j];if(a.hp>0&&b.hp>0&&Math.abs(a.x-b.x)<110&&Math.abs(a.y-b.y)<110)collide(a,b)}
@@ -645,7 +647,7 @@ function loop(){T++;pvTick();
   for(const s of near){const dx=X-s.x,dz=Z-s.y,d2=dx*dx+dz*dz;if(d2<40000){const d=Math.sqrt(d2);w+=Math.abs(s.v)*.35*Math.exp(-d*.018)*Math.sin(d*.08-T*.25)}}
   let sl=0;for(const I of IS){const dx=X-I[0],dz=Z-I[1],R2=I[2]*.8+70;if(dx>I[2]+R2||dx<-I[2]-R2)continue;const d=Math.sqrt(dx*dx+dz*dz)-I[2]*.9;if(d<R2)sl=Math.max(sl,1-Math.max(0,d)/R2)}
   wp.setY(i,h+w);const t=cl((h-.8)*.5+Math.abs(w)*.7,0,1),u=cl((h+2)/4,0,1);
-  wc[i*3]=.03+.05*u+.3*sl+t*.7;wc[i*3+1]=.17+.1*u+.5*sl+t*.55;wc[i*3+2]=.3+.1*u+.4*sl+t*.4}
+  wc[i*3]=.012+.04*u+.3*sl+t*.6;wc[i*3+1]=.09+.08*u+.5*sl+t*.5;wc[i*3+2]=.2+.09*u+.4*sl+t*.38}
  wp.needsUpdate=true;wg.attributes.color.needsUpdate=true;
  S.forEach(sync);
  if(pl){const L=pl.d[1],ang=pl.a+cy,ph=Math.cos(cp),dist=L*(.35+zm*1.1),ty=10+L*.22,dx=Math.cos(ang)*ph,dz=Math.sin(ang)*ph;
