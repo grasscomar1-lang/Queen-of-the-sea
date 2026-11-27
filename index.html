@@ -76,7 +76,8 @@ small{display:block;margin-top:12px;font-size:12px}
 .mb{padding:12px 14px;border:3px double #5a3510;border-radius:8px;background:linear-gradient(#7a4a1a,#4a2e14);color:#f6e0c0;text-align:left;cursor:pointer;box-shadow:0 3px 8px #0006}
 .mb b{display:block;font-size:18px}.mb span{font-size:13px;font-style:italic;opacity:.9}
 #bk{position:fixed;top:10px;left:10px;padding:7px 14px;font:bold 14px Georgia;background:linear-gradient(#f3e2b3,#d9bc7c);color:#3b2208;border:2px solid #6b4423;border-radius:16px;box-shadow:0 3px 8px #0008;z-index:7}
-#splash{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .6s}#splash svg{width:100%;height:100%;display:block}#splash:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 4px #c9a24a,inset 0 0 0 7px #3b2208,inset 0 0 0 9px #e8b830,inset 0 0 40px #000a}
+#splash{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .6s}body.sp #m{background:none}body.sp #splash .art,body.sp #home,body.sp #pfb,body.sp #inst,body.sp #tg,body.sp #wh,body.sp #whz,body.sp .gun,body.sp .sm,body.sp #h,body.sp #mm,body.sp #o,body.sp #cd,body.sp #obj{display:none!important}body.sp #splash{background:linear-gradient(#000b,#0000 48%,#0007)}
+#splash svg{width:100%;height:100%;display:block}#splash:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 4px #c9a24a,inset 0 0 0 7px #3b2208,inset 0 0 0 9px #e8b830,inset 0 0 40px #000a}
 .spship{animation:spb 3.2s ease-in-out infinite;transform-origin:80px 58px}.spw1{animation:spx 5s linear infinite}.spw2{animation:spx 3.4s linear infinite reverse}.spoars{animation:spo 1.6s ease-in-out infinite;transform-origin:80px 58px}.spflag{animation:spf 1s ease-in-out infinite;transform-origin:70px 18px}
 @keyframes spb{50%{transform:translateY(1.4px) rotate(.8deg)}}@keyframes spx{to{transform:translateX(20px)}}@keyframes spo{50%{transform:rotate(-3deg)}}@keyframes spf{50%{transform:scaleX(.8)}}
 #p:not(.story) .cs{display:none}#p.story .cr{display:none}
@@ -106,7 +107,7 @@ small{display:block;margin-top:12px;font-size:12px}
 <linearGradient id="spm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a6a86"/><stop offset="1" stop-color="#06202e"/></linearGradient>
 <linearGradient id="spg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0a8"/><stop offset=".5" stop-color="#e8b830"/><stop offset="1" stop-color="#9a6a14"/></linearGradient>
 <radialGradient id="sps"><stop offset="0" stop-color="#fff6c8"/><stop offset="1" stop-color="#fff6c800"/></radialGradient></defs>
-<rect width="160" height="90" fill="url(#spk)"/><circle cx="118" cy="52" r="20" fill="url(#sps)"/><circle cx="118" cy="52" r="6" fill="#fff3b8"/>
+<g class="art"><rect width="160" height="90" fill="url(#spk)"/><circle cx="118" cy="52" r="20" fill="url(#sps)"/><circle cx="118" cy="52" r="6" fill="#fff3b8"/>
 <path d="M0 52 L14 44 L24 49 L36 42 L48 51 L52 52Z" fill="#2a3b4e"/><path d="M108 52 L124 47 L140 50 L160 45 L160 52Z" fill="#2a3b4e"/>
 <rect y="52" width="160" height="38" fill="url(#spm)"/><path d="M96 52 H140 M104 55 H134 M110 58 H128" stroke="#ffe9a0" stroke-width=".7" opacity=".55"/>
 <g transform="translate(30.4 24.3) scale(.62)"><g class="spship"><g class="spoars" stroke="#3a2410" stroke-width=".9" stroke-linecap="round"><path d="M56 58 L50 68M64 59 L58 69M72 60 L66 70M80 60 L74 70M88 60 L82 70M96 59 L90 69M104 58 L98 68"/></g>
@@ -117,7 +118,7 @@ small{display:block;margin-top:12px;font-size:12px}
 <path d="M70 17 q8 -3 14 0 q-6 3 -14 4Z" fill="#b3122a" class="spflag"/></g></g>
 <path class="spw1" d="M-20 62 q10 -3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V90 H-20Z" fill="#0d3f57" opacity=".85"/>
 <path class="spw2" d="M-20 70 q10 -3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V90 H-20Z" fill="#082b3d"/>
-<text x="80" y="24" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="12.5" fill="url(#spg)" stroke="#3b2208" stroke-width=".5" paint-order="stroke" letter-spacing=".6">BATTAGLIE NAVALI</text>
+</g><text x="80" y="24" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="12.5" fill="url(#spg)" stroke="#3b2208" stroke-width=".5" paint-order="stroke" letter-spacing=".6">BATTAGLIE NAVALI</text>
 <text x="80" y="33" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="5" fill="#ffe9a8" stroke="#3b2208" stroke-width=".3" paint-order="stroke" letter-spacing="1">XII – XVI secolo</text>
 <path d="M44 36.5 H62 M98 36.5 H116" stroke="#e8b830" stroke-width=".4"/></svg></div><div id="p"><button id="bk">◀ Indietro</button><h1 id="t">⚓ Battaglie Navali</h1><div class="sub">XII – XVI secolo</div><div id="rs"></div><div class="cl"><select id="f" style="display:none"></select><select id="s" style="display:none"></select><label>Scegli la tua marina</label><div class="dd" id="df"></div><label>Scegli la nave</label><div class="dd" id="ds"></div><div class="shp"><canvas id="sc" width="300" height="110"></canvas><div id="sd"></div></div></div><div class="cr"><canvas id="fc" width="240" height="160" style="width:130px;height:87px;margin-top:6px;border:2px solid #5a3510"></canvas><div id="i"></div><div class="dd" id="dd3"></div><button id="go">Salpa!</button></div><div class="cs" id="cs"></div>
 <small>Telegrafo = velocità · Ruota = timone · SX/DX = cannoni · Trascina per guardare ai lati · +/− o rotella = zoom (tastiera: W/S A/D Q/E)</small></div></div>
@@ -317,7 +318,7 @@ function fillS(){ss.innerHTML='';F[fs.value][5].forEach((s,i)=>ss.add(new Option
 function inf(){const d=F[fs.value][5][ss.value];$('fc').getContext('2d').drawImage(flagCv(F[fs.value]),0,0);if(PVR)setPreview(F[fs.value],d);sdata();ddr();if(MODE=='story')renderStory();$('i').textContent='Scafo '+d[5]+' · Cannoni '+d[8]+' · Velocità '+d[6]+' · Lunghezza '+d[1]}
 $('m').onclick=e=>{SFX.init();SFX.click();const b=e.target.closest('.ddb'),it=e.target.closest('.it');if(b){const l=b.nextElementSibling,o=l.classList.contains('open');ddClose();if(!o)l.classList.add('open')}else if(it){if(it.closest('#df')){fs.value=it.dataset.i;fillS()}else if(it.closest('#dd3')){DIF=DIFQ=+it.dataset.i;ddd()}else{ss.value=it.dataset.i;inf()}ddClose()}else ddClose()};
 fs.onchange=fillS;ss.onchange=inf;fillS();ddd();
-let S=[],B=[],P=[],FM=[],pl=null,T=0,over=0,cy=0,cp=-.2,zm=.6,wa=R()*2*PI,ws=.8;const k={};
+let S=[],B=[],P=[],FM=[],pl=null,DEMO=0,DR=0,T=0,over=0,cy=0,cp=-.2,zm=.6,wa=R()*2*PI,ws=.8;const k={};
 // ---- scena 3D
 const ren=new THREE.WebGLRenderer({canvas:$('c'),antialias:true}),sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(62,1,1,3000);
 sc.background=new THREE.Color(0xa8d6ea);sc.fog=new THREE.Fog(0xa8d6ea,250,1300);
@@ -570,9 +571,12 @@ function pt(x,y,t,h){const sp=PS.find(q=>!q.visible);if(!sp)return;sp.visible=tr
 const bgeo=new THREE.SphereGeometry(1.2,6,6),bmat=new THREE.MeshBasicMaterial({color:0x111111});
 // ---- logica
 function mk(fi,si,team,x,y,isP){const f=F[fi],d=f[5][si],s={f,d,team,x,y,a:team?PI:0,v:0,lvl:1,hp:d[5],mx:d[5],rl:[0,0],sink:0,tin:0,isP,sd:R()*50};mkMesh(s);return s}
-function start(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];over=0;cy=0;cdEnd=Date.now()+15000;cdLast=-1;SFX.init();SFX.amb();MS={k:0,r:0,s:0};$('rs').textContent='';
+function start(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];DEMO=0;over=0;cy=0;cdEnd=Date.now()+15000;cdLast=-1;SFX.init();SFX.amb();MS={k:0,r:0,s:0};$('rs').textContent='';
  spawn();
  S.forEach(s=>{if(s.team){s.hp*=DF[DIF].hp;s.mx=s.hp}});$('m').style.display='none'}
+function demoStart(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];over=0;cy=0;cdEnd=0;cdLast=-1;SC=null;DIF=1;DR=0;
+ spawn();buildIslands([[-560,-420,120],[600,400,140],[40,-760,150],[-100,820,130]]);pl.isP=false;
+ let n0=0,n1=0;S.forEach(s=>{const t=s.team,i=t?n1++:n0++;s.x=(t?1:-1)*(170+R()*70);s.y=(i-2.5)*95+(R()-.5)*30;s.a=t?PI:0;s.lvl=3;s.v=.8});DEMO=1}
 $('go').onclick=()=>launch(null);
 function spd(d){if(pl&&!over)setLvl(cl(pl.lvl+d,0,4))}
 function setLvl(n){if(n!=pl.lvl){SFX.sail(n>pl.lvl);pl.lvl=n}}
@@ -666,7 +670,7 @@ function loop(){T++;pvTick();
   const a=S.filter(s=>!s.team&&s.hp>0).length,b=S.filter(s=>s.team&&s.hp>0).length,rel=wr(wa-pl.a);
   $('h').innerHTML=(PF.n?esc(PF.n)+' · ':'')+pl.f[0]+' – '+pl.d[0]+(pl.d[9]?' ★ Master':'')+'<div class="hb"><i style="width:'+(Math.max(0,pl.hp)/pl.mx*100)+'%;background:'+(pl.hp/pl.mx>.6?'#3cb043':pl.hp/pl.mx>.3?'#e0b020':'#d93025')+'"></i><b>SCAFO '+Math.max(0,pl.hp|0)+' / '+pl.mx+'</b></div>'+SP[pl.lvl][0]+'<br>Vento '+(Math.abs(rel)<PI/4?'in poppa (veloce)':Math.abs(rel)>3*PI/4?'di prua (lento)':'al traverso')+'<br>Alleati '+a+'/6 · Nemici '+b+'/6';
   const el2=(Date.now()-cdEnd)/1000,sv=SC&&SC.b.tm,wn=!b||(sv&&el2>=SC.b.tm&&pl.hp>0),ls=!a||(sv&&pl.hp<=0);
-  if(!over&&(wn||ls)){over=1;const wv=wn&&!ls;SFX.end(wv);SFX.stop();pfEnd(wv);stEnd(wv);$('t').textContent=wv?'Vittoria! Il mare è tuo':'Sconfitta... la flotta è affondata';$('go').textContent='Rigioca';$('m').style.display='flex'}
+  if(DEMO){if((wn||ls)&&!DR){DR=1;setTimeout(()=>{if(DEMO)demoStart()},4000)}}else if(!over&&(wn||ls)){over=1;const wv=wn&&!ls;SFX.end(wv);SFX.stop();pfEnd(wv);stEnd(wv);$('t').textContent=wv?'Vittoria! Il mare è tuo':'Sconfitta... la flotta è affondata';$('go').textContent='Rigioca';$('m').style.display='flex'}
   cy=cl(cy+((k.ArrowRight?1:0)-(k.ArrowLeft?1:0))*.03,-3,3);ui();SFX.tickAmb();objUpd();
  }
  const CS=3000/90,cx=pl?pl.x:0,cz=pl?pl.y:0,wx=Math.round(cx/CS)*CS,wz=Math.round(cz/CS)*CS;water.position.set(wx,0,wz);
@@ -678,7 +682,7 @@ function loop(){T++;pvTick();
   wc[i*3]=.012+.04*u+.3*sl+t*.6;wc[i*3+1]=.09+.08*u+.5*sl+t*.5;wc[i*3+2]=.2+.09*u+.4*sl+t*.38}
  wp.needsUpdate=true;wg.attributes.color.needsUpdate=true;
  S.forEach(sync);
- if(pl){const L=pl.d[1],ang=pl.a+cy,ph=Math.cos(cp),dist=L*(.35+zm*1.1),ty=10+L*.22,dx=Math.cos(ang)*ph,dz=Math.sin(ang)*ph;
+ if(DEMO){const r=330+60*Math.sin(T*.002),an=T*.0035;cam.position.set(Math.cos(an)*r,48+14*Math.sin(T*.003),Math.sin(an)*r);cam.lookAt(0,8,0)}else if(pl){const L=pl.d[1],ang=pl.a+cy,ph=Math.cos(cp),dist=L*(.35+zm*1.1),ty=10+L*.22,dx=Math.cos(ang)*ph,dz=Math.sin(ang)*ph;
   cam.position.set(pl.x-dx*dist,Math.max(5,ty-Math.sin(cp)*dist),pl.y-dz*dist);cam.lookAt(pl.x+dx*L*.25,ty,pl.y+dz*L*.25)}
  else{cam.position.set(Math.cos(T*.002)*600,60,Math.sin(T*.002)*600);cam.lookAt(0,0,0)}
  ren.render(sc,cam);
@@ -724,7 +728,8 @@ $('pn').oninput=()=>{PF.n=$('pn').value.trim().slice(0,16);pfSave();pfBtn()};
 $('pexp').onclick=async()=>{const t=JSON.stringify(PF),b=$('pbk');b.style.display='block';b.value=t;b.select();let ok=false;try{await navigator.clipboard.writeText(t);ok=true}catch(e){}$('pmsg').textContent=ok?'Codice copiato: incollalo in una nota per non perderlo.':'Copia il codice qui sotto e conservalo.'};
 $('pimp').onclick=()=>{const b=$('pbk');if(b.style.display!='block'||!b.value.trim()){b.style.display='block';b.value='';b.focus();$('pmsg').textContent='Incolla il codice e tocca di nuovo «Carica codice».';return}let ok=false;try{ok=pfSet(JSON.parse(b.value))}catch(e){}if(ok){pfSave();pfBtn();pfShow();$('pmsg').textContent='Profilo caricato.'}else $('pmsg').textContent='Codice non valido.'};
 $('prst').onclick=()=>{if(confirm('Azzerare tutte le statistiche?')){PF.g=PF.w=PF.d=PF.k=PF.s=PF.r=0;PF.u={};pfSave();pfShow()}};
-pfLoad();pfBtn();renderModes();showScr('home');setTimeout(()=>{const sp=$('splash');sp.style.opacity=0;setTimeout(()=>sp.remove(),700)},5000);
+pfLoad();pfBtn();renderModes();showScr('home');try{demoStart();document.body.classList.add('sp')}catch(e){DEMO=0}
+setTimeout(()=>{document.body.classList.remove('sp');const sp=$('splash');sp.style.opacity=0;setTimeout(()=>sp.remove(),700)},5000);
 $('bk').onclick=()=>{SFX.init();showScr('home')};
 $('cs').onclick=e=>{const c=e.target.closest('.bcard');if(!c)return;e.stopPropagation();SFX.init();SFX.click();if(c.classList.contains('lock'))$('rs').textContent='Vinci la battaglia precedente per sbloccarla.';else showBrief(+fs.value,+c.dataset.b)};
 $('bno').onclick=()=>{$('brief').style.display='none'};
