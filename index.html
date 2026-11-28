@@ -216,7 +216,7 @@ const dd={f:$('df'),s:$('ds')},fimgs={},TN=['Leggera','Media','Pesante','Master 
 function fimg(i){return fimgs[i]||(fimgs[i]=flagCv(F[i],96,64).toDataURL())}
 function ddr(){const fi=+fs.value,si=+ss.value,f=F[fi];
  dd.f.innerHTML='<div class="ddb"><img src="'+fimg(fi)+'"><span>'+f[0]+'</span><i>▾</i></div><div class="ddl">'+F.map((q,i)=>'<div class="it'+(i==fi?' on':'')+'" data-i="'+i+'"><img src="'+fimg(i)+'"><span>'+q[0]+'</span></div>').join('')+'</div>';
- dd.s.innerHTML='<div class="ddb"><span>'+TN[si]+' – '+f[5][si][0]+'</span><i>▾</i></div><div class="ddl">'+f[5].map((q,i)=>{const u=UL(fi,i);return'<div class="it'+(i==si?' on':'')+(u?'':' lk')+'" data-i="'+i+'"'+(u?'':' style="opacity:.45"')+'><span>'+(u?'':'🔒 ')+TN[i]+' – '+q[0]+'</span><small>'+(u?'Scafo '+q[5]+' · Cannoni '+q[8]:'Sbloccala nella Storia')+'</small></div>'}).join('')+'</div>'}
+ dd.s.innerHTML='<div class="ddb"><span>'+TN[si]+' – '+f[5][si][0]+'</span><i>▾</i></div><div class="ddl">'+f[5].map((q,i)=>{const u=UL(fi,i);return'<div class="it'+(i==si?' on':'')+(u?'':' lk')+'" data-i="'+i+'"'+(u?'':' style="opacity:.45"')+'><span>'+(u?'':'🔒 ')+TN[i]+' – '+q[0]+'</span><small>'+'Scafo '+q[5]+' · Cannoni '+q[8]+(u?'':' · 🔒 da sbloccare')+'</small></div>'}).join('')+'</div>'}
 const RW=[[0,-1,2],[4,-1,3],[5,-1,-1]],UL=(fi,si)=>si==1||!!((PF.un||{})[fi]||[])[si];
 const DN=['Facile','Media','Difficile'],DD=['Nemici più deboli','Sfida equilibrata','Nemici più forti'];
 function ddd(){$('dd3').innerHTML='<div class="ddb dlk"><b>Difficoltà</b><svg viewBox="0 0 24 26" width="26" height="28"><rect x="3" y="11" width="18" height="13" rx="2.5" fill="#c9a24a" stroke="#5a3a10" stroke-width="1.6"/><path d="M7 11V8a5 5 0 0 1 10 0v3" fill="none" stroke="#5a3a10" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="16.5" r="2" fill="#5a3a10"/><rect x="11.2" y="16.5" width="1.6" height="4.5" fill="#5a3a10"/></svg><small>'+DN[DIF]+'</small></div><div class="ddl">'+DN.map((n,i)=>'<div class="it'+(i==DIF?' on':'')+'" data-i="'+i+'"><span>'+n+'</span><small>'+DD[i]+'</small></div>').join('')+'</div>'}
@@ -329,8 +329,8 @@ function shipDraw(cv,f,d){const W=cv.width,H=cv.height,x=cv.getContext('2d'),[,L
 F.forEach(f=>{f[5]=f[5].concat(f[5].slice(0,3).map(d=>{const c=d.slice();c[8]=d[8]+2;c[9]=1;return c}))});
 const fs=$('f'),ss=$('s');F.forEach((f,i)=>fs.add(new Option(f[0],i)));
 function fillS(){ss.innerHTML='';F[fs.value][5].forEach((s,i)=>ss.add(new Option(TN[i]+' – '+s[0],i)));if(!UL(+fs.value,+ss.value))ss.value=1;inf()}
-function inf(){const d=F[fs.value][5][ss.value];$('fc').getContext('2d').drawImage(flagCv(F[fs.value]),0,0);if(PVR)setPreview(F[fs.value],d);sdata();ddr();if(MODE=='story')renderStory();$('i').textContent='Scafo '+d[5]+' · Cannoni '+d[8]+' · Velocità '+d[6]+' · Lunghezza '+d[1]}
-$('m').onclick=e=>{SFX.init();SFX.click();const b=e.target.closest('.ddb'),it=e.target.closest('.it');if(b){const l=b.nextElementSibling,o=l.classList.contains('open');ddClose();if(!o)l.classList.add('open')}else if(it){if(it.closest('#df')){fs.value=it.dataset.i;fillS()}else if(it.closest('#dd3')){DIF=DIFQ=+it.dataset.i;ddd()}else{if(!UL(+fs.value,+it.dataset.i)){SFX.click();return}ss.value=it.dataset.i;inf()}ddClose()}else ddClose()};
+function inf(){const d=F[fs.value][5][ss.value];$('fc').getContext('2d').drawImage(flagCv(F[fs.value]),0,0);if(PVR)setPreview(F[fs.value],d);sdata();ddr();if(MODE=='story')renderStory();$('i').textContent='Scafo '+d[5]+' · Cannoni '+d[8]+' · Velocità '+d[6]+' · Lunghezza '+d[1]+(UL(+fs.value,+ss.value)?'':'  🔒 Bloccata: vincila nella Storia')}
+$('m').onclick=e=>{SFX.init();SFX.click();const b=e.target.closest('.ddb'),it=e.target.closest('.it');if(b){const l=b.nextElementSibling,o=l.classList.contains('open');ddClose();if(!o)l.classList.add('open')}else if(it){if(it.closest('#df')){fs.value=it.dataset.i;fillS()}else if(it.closest('#dd3')){DIF=DIFQ=+it.dataset.i;ddd()}else{ss.value=it.dataset.i;inf()}ddClose()}else ddClose()};
 fs.onchange=fillS;ss.onchange=inf;fillS();ddd();
 let S=[],B=[],P=[],FM=[],pl=null,DEMO=0,DR=0,T=0,over=0,cy=0,cp=-.2,zm=.6,wa=R()*2*PI,ws=.8;const k={};
 // ---- scena 3D
@@ -591,7 +591,7 @@ function start(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.for
 function demoStart(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];over=0;cy=0;cdEnd=0;cdLast=-1;SC=null;DIF=1;DR=0;
  spawn();buildIslands([[-560,-420,120],[600,400,140],[40,-760,150],[-100,820,130]]);pl.isP=false;
  let n0=0,n1=0;S.forEach(s=>{const t=s.team,i=t?n1++:n0++;s.x=(t?1:-1)*(170+R()*70);s.y=(i-2.5)*95+(R()-.5)*30;s.a=t?PI:0;s.lvl=3;s.v=.8});DEMO=1}
-$('go').onclick=()=>launch(null);
+$('go').onclick=()=>{if(!UL(+fs.value,+ss.value)){$('i').textContent='🔒 Nave bloccata: sbloccala vincendo nella Modalità Storia';return}launch(null)};
 function spd(d){if(pl&&!over)setLvl(cl(pl.lvl+d,0,4))}
 function setLvl(n){if(n!=pl.lvl){SFX.sail(n>pl.lvl);pl.lvl=n}}
 onkeydown=e=>{const q=e.key.length>1?e.key:e.key.toLowerCase();k[q]=1;if(!pl||over)return;
@@ -747,7 +747,7 @@ setTimeout(()=>{document.body.classList.remove('sp');const sp=$('splash');sp.sty
 $('bk').onclick=()=>{SFX.init();showScr('home')};
 $('cs').onclick=e=>{const c=e.target.closest('.bcard');if(!c)return;e.stopPropagation();SFX.init();SFX.click();if(c.classList.contains('lock'))$('rs').textContent='Vinci la battaglia precedente per sbloccarla.';else showBrief(+fs.value,+c.dataset.b)};
 $('bno').onclick=()=>{$('brief').style.display='none'};
-$('bgo').onclick=()=>{$('brief').style.display='none';launch({me:BR.me,bi:BR.i,b:BT[BR.me][BR.i],dif:BRD})};
+$('bgo').onclick=()=>{if(!UL(+fs.value,+ss.value)){$('bg').textContent='🔒 La nave scelta è bloccata: scegline una sbloccata (es. la Media).';return}$('brief').style.display='none';launch({me:BR.me,bi:BR.i,b:BT[BR.me][BR.i],dif:BRD})};
 PVR=1;setPreview(F[fs.value],F[fs.value][5][ss.value]);
 loop();
 </script></body></html>
