@@ -1,7 +1,7 @@
 {
- "name": "Battaglie Navali 1200–1400",
- "short_name": "Navali",
- "description": "Scontri navali nel Medioevo: 8 marine, 24 navi, 6 contro 6.",
+ "name": "Repubbliche Marinare",
+ "short_name": "Marinare",
+ "description": "Scontri navali dal XII al XVI secolo: 8 marine, 24 navi, 6 contro 6.",
  "start_url": "./index.html",
  "scope": "./",
  "display": "fullscreen",
