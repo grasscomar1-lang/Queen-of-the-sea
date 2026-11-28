@@ -86,11 +86,25 @@ small{display:block;margin-top:12px;font-size:12px}
 .bcard b{display:block;font-size:13px}.bcard span{font-size:12px;display:block}.bcard small{font-size:11px;font-style:italic;margin:0;display:block}
 .bcard.lock{opacity:.55;background:#d8c79a}.bcard.done{border-color:#2d6a2a;background:#e8efc8}
 @media (orientation:landscape){#p.story{grid-template-columns:1fr 250px}}
+#nvb{float:right;margin-left:6px;padding:4px 9px;border-radius:8px;border:2px solid #e8b830;background:#3a2410;color:#f4e4c0;font-size:13px;font-weight:bold}
+#nvo{display:none;position:fixed;inset:0;z-index:45;background:#000d;flex-direction:column;color:#f4e4c0}
+#nvh{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;font-weight:bold;font-size:15px}
+#nvh button{padding:5px 12px;border-radius:8px;border:2px solid #e8b830;background:#3a2410;color:#f4e4c0}
+#nvs{flex:1;display:flex;align-items:center;overflow-x:auto;overflow-y:hidden;touch-action:pan-x;-webkit-overflow-scrolling:touch;padding:0 20px 8px;scroll-snap-type:x proximity}
+#nvt{display:flex;align-items:flex-start;min-width:max-content;padding:0 30px}
+.nvn{width:158px;margin:0 7px;display:flex;flex-direction:column;align-items:center;scroll-snap-align:center}
+.nvc{width:100%;height:176px;box-sizing:border-box;border:3px solid #e8b830;border-radius:8px;background:#f6e9c4;color:#2a1a08;padding:5px;text-align:center;line-height:1.2;overflow:hidden}
+.nvc img{width:100%;height:76px;object-fit:contain;background:#7fb0c4;border-radius:5px;display:block}
+.nvc b{display:block;font-size:12.5px;margin-top:3px}.nvc small{display:block;font-size:11px}
+.nvn.lk .nvc{background:#cdbd92;border-color:#7a6a3a}.nvn.lk img{filter:grayscale(1) brightness(.55)}
+.nvk{width:calc(100% + 14px);height:4px;background:#e8b830;position:relative;margin-top:14px}.nvk:before{content:"";position:absolute;left:50%;top:-14px;width:4px;height:14px;margin-left:-2px;background:#e8b830}
+.nvl{font-size:12px;text-align:center;margin-top:3px;min-height:34px}
+.nvd{flex:0 0 176px}
 #brief{display:none;position:fixed;inset:0;z-index:40;background:#000b;align-items:center;justify-content:center}
 #bc{width:min(94vw,560px);max-height:94vh;overflow-y:auto;box-sizing:border-box;padding:16px 20px;color:#3b2208;border-radius:8px;border:3px solid #6b4423;background:radial-gradient(ellipse at 30% 20%,#f3e2b3,#e0c58a 60%,#c9a468);box-shadow:inset 0 0 30px #7a4a1a88,0 10px 40px #000}
 #bc h2{margin:0 0 4px;font-size:20px;text-align:center}#bm{text-align:center;font-style:italic;font-size:13px;margin-bottom:8px}#bc p{margin:6px 0;font-size:14px;line-height:1.4}
 #obj{position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:3;display:none;padding:4px 14px;font-size:13px;color:#f3e7c9;background:#3b2a18dd;border:2px solid #c9a24a;border-radius:12px;pointer-events:none;white-space:nowrap}
-</style></head><body><canvas id="c"></canvas><canvas id="o"></canvas><canvas id="mm" width="150" height="150"></canvas><div id="h"></div><div class="sm wood" id="mt">🔊</div><div id="prof"><div id="pc"><h2>⚓ Profilo del capitano</h2><label>Nickname</label><input id="pn" maxlength="16" placeholder="Scrivi il tuo nome" autocomplete="off"><div id="pg"></div><div class="pbt"><button id="pexp">Copia codice</button><button id="pimp">Carica codice</button><button id="prst">Azzera</button><button id="pcl">Chiudi</button></div><textarea id="pbk" placeholder="Incolla qui il codice salvato"></textarea><span id="pmsg"></span></div></div><div id="obj"></div><div id="brief"><div id="bc"><h2 id="bt"></h2><div id="bm"></div><p id="bx"></p><p id="bg"></p><div id="bdf"></div><div class="pbt"><button id="bgo">⚔ Inizia battaglia</button><button id="bno">Indietro</button></div></div></div><div id="cd"></div><div id="rot">📱↻<br>Ruota il telefono in orizzontale per giocare</div>
+</style></head><body><canvas id="c"></canvas><canvas id="o"></canvas><canvas id="mm" width="150" height="150"></canvas><div id="h"></div><div class="sm wood" id="mt">🔊</div><div id="prof"><div id="pc"><h2>⚓ Profilo del capitano</h2><label>Nickname</label><input id="pn" maxlength="16" placeholder="Scrivi il tuo nome" autocomplete="off"><div id="pg"></div><div class="pbt"><button id="pexp">Copia codice</button><button id="pimp">Carica codice</button><button id="prst">Azzera</button><button id="pcl">Chiudi</button></div><textarea id="pbk" placeholder="Incolla qui il codice salvato"></textarea><span id="pmsg"></span></div></div><div id="obj"></div><div id="brief"><div id="bc"><h2 id="bt"></h2><div id="bm"></div><p id="bx"></p><p id="bg"></p><div id="bdf"></div><div class="pbt"><button id="bgo">⚔ Inizia battaglia</button><button id="bno">Indietro</button></div></div></div><div id="nvo"><div id="nvh"><span id="nvtt"></span><button id="nvx">✕ Chiudi</button></div><div id="nvs"><div id="nvt"></div></div></div><div id="cd"></div><div id="rot">📱↻<br>Ruota il telefono in orizzontale per giocare</div>
 <div id="tg" class="wood"><div data-l="4">TUTTA<br>VELA</div><div data-l="3">MEZZA<br>VELA</div><div data-l="2">LENTO</div><div data-l="1">FERMA</div><div data-l="0">RETRO</div></div>
 <div class="sm wood" id="sp" style="right:8px;bottom:66px">+</div><div class="sm wood" id="sq" style="right:8px;bottom:14px">−</div>
 <div id="whz"></div><div id="wh"><svg viewBox="-52 -52 104 104"><defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0a83a"/><stop offset="1" stop-color="#a85d12"/></linearGradient><radialGradient id="hb"><stop offset="0" stop-color="#e2c25a"/><stop offset="1" stop-color="#8a6a1a"/></radialGradient>
@@ -296,8 +310,16 @@ const MODES=[{t:'⚔ Partita veloce',d:"Scontro contro l'IA: scegli nazione, nav
  {t:'📜 Modalità Storia',d:'Tre battaglie storiche per ogni nazione, con obiettivi e mappe dedicate.',f:()=>{showScr('story');renderStory()}}];
 function renderModes(){const m=$('modes');m.innerHTML='';MODES.forEach(o=>{const b=document.createElement('div');b.className='mb';b.innerHTML='<b>'+o.t+'</b><span>'+o.d+'</span>';b.onclick=()=>o.f();m.appendChild(b)})}
 function renderStory(){const me=+fs.value,prog=(PF.st||{})[me]||[0,0,0];
- $('cs').innerHTML='<div class="cst">Battaglie storiche – '+esc(F[me][0])+'</div>'+BT[me].map((b,i)=>{const open=i==0||prog[i-1],done=prog[i];return'<div class="bcard'+(open?'':' lock')+(done?' done':'')+'" data-b="'+i+'"><b>'+(done?'✓ ':open?'':'🔒 ')+b.y+' · '+esc(b.t)+'</b><span>'+esc(b.p)+'</span><small>Tu '+b.n[0]+' navi vs '+b.n[1]+' · difficoltà a scelta</small></div>'}).join('')}
-var BR=null;
+ $('cs').innerHTML='<div class="cst"><button id="nvb">⚓ Navi</button>Battaglie storiche – '+esc(F[me][0])+'</div>'+BT[me].map((b,i)=>{const open=i==0||prog[i-1],done=prog[i];return'<div class="bcard'+(open?'':' lock')+(done?' done':'')+'" data-b="'+i+'"><b>'+(done?'✓ ':open?'':'🔒 ')+b.y+' · '+esc(b.t)+'</b><span>'+esc(b.p)+'</span><small>Tu '+b.n[0]+' navi vs '+b.n[1]+' · difficoltà a scelta</small></div>'}).join('')}
+var BR=null,TH={};
+function shipThumb(fi,si){const k=fi+'_'+si;if(TH[k]!==undefined)return TH[k];let u='';try{const f=F[fi],d=f[5][si];setPreview(f,d);const L=d[1],H=d[0]=='Sagitta'?L:L*.6,D=Math.max(L*2,H*1.9),y=.9,q=.3;pren.setSize(240,120,false);pcam.aspect=2;pcam.updateProjectionMatrix();pcam.position.set(Math.cos(y)*Math.cos(q)*D,Math.sin(q)*D+L*.15,Math.sin(y)*Math.cos(q)*D);pcam.lookAt(0,H*.35,0);pren.render(psc,pcam);u=pren.domElement.toDataURL()}catch(e){u=''}pw=0;TH[k]=u;return u}
+function nvOpen(){const fi=+fs.value,f=F[fi],it=[{si:1,l:'Nave iniziale'}];for(let d=0;d<3;d++)for(let i=0;i<3;i++)if(RW[d][i]>=0)it.push({si:RW[d][i],l:(i+1)+'ª battaglia<br><b>'+DN[d]+'</b>'});
+ $('nvtt').textContent='⚓ Navi – '+f[0];
+ $('nvt').innerHTML=it.map((o,n)=>{const q=f[5][o.si],u=UL(fi,o.si),im=shipThumb(fi,o.si);return'<div class="nvn'+(u?'':' lk')+'" data-s="'+o.si+'"><div class="nvc">'+(im?'<img src="'+im+'">':'<div style="height:76px;font-size:40px">⚓</div>')+'<b>'+(u?'✓ ':'🔒 ')+TN[o.si]+'</b><small>'+esc(q[0])+'</small><small>Scafo '+q[5]+' · Cannoni '+q[8]+'</small><small>Velocità '+q[6]+'</small></div><div class="nvk"></div><div class="nvl">'+o.l+'</div></div>'}).join('');
+ try{setPreview(f,f[5][+ss.value])}catch(e){}
+ $('nvo').style.display='flex';$('nvs').scrollLeft=0}
+$('nvx').onclick=()=>{$('nvo').style.display='none'};
+$('nvt').onclick=e=>{const c=e.target.closest('.nvn');if(!c||c.classList.contains('lk'))return;ss.value=c.dataset.s;inf();$('nvo').style.display='none'};
 function showBrief(me,i){const b=BT[me][i];BR={me,i};$('bt').textContent=b.t+' ('+b.y+')';$('bm').textContent=F[me][0]+' contro '+F[b.e][0]+' · '+b.p;$('bx').textContent=b.x;
  $('bg').textContent='Obiettivo: '+(b.tm?'resisti '+fmt(b.tm)+' senza farti affondare':'distruggi la flotta nemica')+'. Forze: tu '+b.n[0]+' navi, nemici '+b.n[1]+'';BRD=b.d;bdr();$('brief').style.display='flex'}
 var BRD=1;
@@ -746,7 +768,7 @@ $('prst').onclick=()=>{if(confirm('Azzerare tutte le statistiche?')){PF.g=PF.w=P
 pfLoad();pfBtn();renderModes();showScr('home');try{demoStart();document.body.classList.add('sp')}catch(e){DEMO=0}
 setTimeout(()=>{document.body.classList.remove('sp');const sp=$('splash');sp.style.opacity=0;setTimeout(()=>sp.remove(),700)},5000);
 $('bk').onclick=()=>{SFX.init();showScr('home')};
-$('cs').onclick=e=>{const c=e.target.closest('.bcard');if(!c)return;e.stopPropagation();SFX.init();SFX.click();if(c.classList.contains('lock'))$('rs').textContent='Vinci la battaglia precedente per sbloccarla.';else showBrief(+fs.value,+c.dataset.b)};
+$('cs').onclick=e=>{if(e.target.closest('#nvb')){e.stopPropagation();SFX.init();SFX.click();nvOpen();return}const c=e.target.closest('.bcard');if(!c)return;e.stopPropagation();SFX.init();SFX.click();if(c.classList.contains('lock'))$('rs').textContent='Vinci la battaglia precedente per sbloccarla.';else showBrief(+fs.value,+c.dataset.b)};
 $('bno').onclick=()=>{$('brief').style.display='none'};
 $('bgo').onclick=()=>{if(!UL(+fs.value,+ss.value)){$('bg').textContent='🔒 La nave scelta è bloccata: scegline una sbloccata (es. la Media).';return}$('brief').style.display='none';launch({me:BR.me,bi:BR.i,b:BT[BR.me][BR.i],dif:BRD})};
 PVR=1;setPreview(F[fs.value],F[fs.value][5][ss.value]);
