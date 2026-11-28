@@ -101,11 +101,18 @@ small{display:block;margin-top:12px;font-size:12px}
 .nvk{width:calc(100% + 14px);height:4px;background:#e8b830;position:relative;margin-top:14px}.nvk:before{content:"";position:absolute;left:50%;top:-14px;width:4px;height:14px;margin-left:-2px;background:#e8b830}
 .nvl{font-size:12px;text-align:center;margin-top:3px;min-height:34px}
 .nvd{flex:0 0 176px}
+#h{top:48px}
+#xq{position:fixed;top:8px;right:8px;width:32px;height:32px;border-radius:50%;z-index:4;display:none;align-items:center;justify-content:center;font-size:16px;font-weight:bold;cursor:pointer}
+body.sp #xq,body.mnu #xq{display:none!important}
+#qp{display:none;position:fixed;inset:0;z-index:42;background:#0008;align-items:center;justify-content:center}
+#qc{padding:14px 20px;color:#3b2208;border-radius:8px;border:3px solid #6b4423;background:radial-gradient(ellipse at 30% 20%,#f3e2b3,#e0c58a 60%,#c9a468);box-shadow:0 10px 40px #000;text-align:center}
+#qc h3{margin:0 0 10px;font-size:16px}#qc button{display:block;width:210px;margin:6px auto;font:14px Georgia;padding:8px 12px;border:2px solid #7a4a1a;border-radius:14px;background:#f6e9c4;color:#3b2208}
+#rt{display:none;position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;padding:8px 16px;font-size:14px;color:#f3e7c9;background:#3b2a18ee;border:2px solid #c9a24a;border-radius:12px;pointer-events:none;text-align:center}
 #brief{display:none;position:fixed;inset:0;z-index:40;background:#000b;align-items:center;justify-content:center}
 #bc{width:min(94vw,560px);max-height:94vh;overflow-y:auto;box-sizing:border-box;padding:16px 20px;color:#3b2208;border-radius:8px;border:3px solid #6b4423;background:radial-gradient(ellipse at 30% 20%,#f3e2b3,#e0c58a 60%,#c9a468);box-shadow:inset 0 0 30px #7a4a1a88,0 10px 40px #000}
 #bc h2{margin:0 0 4px;font-size:20px;text-align:center}#bm{text-align:center;font-style:italic;font-size:13px;margin-bottom:8px}#bc p{margin:6px 0;font-size:14px;line-height:1.4}
 #obj{position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:3;display:none;padding:4px 14px;font-size:13px;color:#f3e7c9;background:#3b2a18dd;border:2px solid #c9a24a;border-radius:12px;pointer-events:none;white-space:nowrap}
-</style></head><body><canvas id="c"></canvas><canvas id="o"></canvas><canvas id="mm" width="150" height="150"></canvas><div id="h"></div><div class="sm wood" id="mt">🔊</div><div id="prof"><div id="pc"><h2>⚓ Profilo del capitano</h2><label>Nickname</label><input id="pn" maxlength="16" placeholder="Scrivi il tuo nome" autocomplete="off"><div id="pg"></div><div class="pbt"><button id="pexp">Copia codice</button><button id="pimp">Carica codice</button><button id="prst">Azzera</button><button id="pcl">Chiudi</button></div><textarea id="pbk" placeholder="Incolla qui il codice salvato"></textarea><span id="pmsg"></span></div></div><div id="obj"></div><div id="brief"><div id="bc"><h2 id="bt"></h2><div id="bm"></div><p id="bx"></p><p id="bg"></p><div id="bdf"></div><div class="pbt"><button id="bgo">⚔ Inizia battaglia</button><button id="bno">Indietro</button></div></div></div><div id="nvo"><div id="nvh"><span id="nvtt"></span><button id="nvx">✕ Chiudi</button></div><div id="nvs"><div id="nvt"></div></div></div><div id="cd"></div><div id="rot">📱↻<br>Ruota il telefono in orizzontale per giocare</div>
+</style></head><body><canvas id="c"></canvas><canvas id="o"></canvas><canvas id="mm" width="150" height="150"></canvas><div id="h"></div><div class="sm wood" id="mt">🔊</div><div id="prof"><div id="pc"><h2>⚓ Profilo del capitano</h2><label>Nickname</label><input id="pn" maxlength="16" placeholder="Scrivi il tuo nome" autocomplete="off"><div id="pg"></div><div class="pbt"><button id="pexp">Copia codice</button><button id="pimp">Carica codice</button><button id="prst">Azzera</button><button id="pcl">Chiudi</button></div><textarea id="pbk" placeholder="Incolla qui il codice salvato"></textarea><span id="pmsg"></span></div></div><div id="obj"></div><div id="brief"><div id="bc"><h2 id="bt"></h2><div id="bm"></div><p id="bx"></p><p id="bg"></p><div id="bdf"></div><div class="pbt"><button id="bgo">⚔ Inizia battaglia</button><button id="bno">Indietro</button></div></div></div><div id="nvo"><div id="nvh"><span id="nvtt"></span><button id="nvx">✕ Chiudi</button></div><div id="nvs"><div id="nvt"></div></div></div><div class="sm wood" id="xq">✕</div><div id="qp"><div id="qc"><h3>Partita in corso</h3><button id="qk">▶ Continua</button><button id="qr">↻ Ricomincia battaglia</button><button id="qm">⌂ Torna al menu</button></div></div><div id="rt"></div><div id="cd"></div><div id="rot">📱↻<br>Ruota il telefono in orizzontale per giocare</div>
 <div id="tg" class="wood"><div data-l="4">TUTTA<br>VELA</div><div data-l="3">MEZZA<br>VELA</div><div data-l="2">LENTO</div><div data-l="1">FERMA</div><div data-l="0">RETRO</div></div>
 <div class="sm wood" id="sp" style="right:8px;bottom:66px">+</div><div class="sm wood" id="sq" style="right:8px;bottom:14px">−</div>
 <div id="whz"></div><div id="wh"><svg viewBox="-52 -52 104 104"><defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0a83a"/><stop offset="1" stop-color="#a85d12"/></linearGradient><radialGradient id="hb"><stop offset="0" stop-color="#e2c25a"/><stop offset="1" stop-color="#8a6a1a"/></radialGradient>
@@ -198,7 +205,7 @@ const SFX=(()=>{let ac=null,mg=null,nb=null,amb=null,on=true;try{on=localStorage
  const mstop=()=>{if(!mOn)return;mOn=0;clearInterval(mt);if(mus){const m=mus;mus=null;m.gain.cancelScheduledValues(ac.currentTime);m.gain.setTargetAtTime(0,ac.currentTime,.15);setTimeout(()=>m.disconnect(),700)}};
  const menu=v=>{menuOn=v?1:0;if(v)mstart();else mstop()};
  const API={init:()=>{init();mstart()},crash,sail,fire,hit,splash,sink,horn,tick,click,end,oar,creak,amb:ambStart,stop,tickAmb,toggle,isOn:()=>on,menu};
- for(const k of['crash','sail','fire','hit','splash','sink','horn','oar','creak','tickAmb']){const f=API[k];API[k]=(...a)=>{if(DEMO)return;return f(...a)}}
+ for(const k of['crash','sail','fire','hit','splash','sink','horn','oar','creak','tickAmb','end']){const f=API[k];API[k]=(...a)=>{if(DEMO||QUIET)return;return f(...a)}}
  return API})();
 const SP=[["Retro",-.3],["Ferma",0],["Avanti lento",.4],["Mezza vela",.7],["Tutta vela",1]];
 const F=[
@@ -240,7 +247,7 @@ function flagCv(f,W=240,H=160){const c=document.createElement('canvas');c.width=
   x.fillStyle='#e0d41c';x.beginPath();for(let i=0;i<10;i++){const r=i%2?.04*m:.1*m,a=i*PI/5-PI/2;x.lineTo(cx+.17*m+Math.cos(a)*r,cy-.1*m+Math.sin(a)*r)}x.fill();
   x.fillStyle='#0004';for(let i=0;i<4;i++){x.beginPath();x.moveTo(0,H*(i*.25+.04));x.lineTo(m*.06,H*(i*.25+.125));x.lineTo(0,H*(i*.25+.21));x.fill()}}
  x.strokeStyle='#0006';x.lineWidth=m*.03;x.strokeRect(0,0,W,H);return c}
-var PVR=0,cdEnd=0,cdLast=-1,DIF=1,DIFQ=1,SC=null,MODE='quick',DF=[{rl:1.5,dm:.7,sp:.2,spd:.85,hp:.9,aim:.15},{rl:1,dm:1,sp:.09,spd:1,hp:1,aim:.3},{rl:.8,dm:1.2,sp:.05,spd:1.05,hp:1.15,aim:.4}];
+var QUIET=0,PVR=0,cdEnd=0,cdLast=-1,DIF=1,DIFQ=1,SC=null,MODE='quick',DF=[{rl:1.5,dm:.7,sp:.2,spd:.85,hp:.9,aim:.15},{rl:1,dm:1,sp:.09,spd:1,hp:1,aim:.3},{rl:.8,dm:1.2,sp:.05,spd:1.05,hp:1.15,aim:.4}];
 const dd={f:$('df'),s:$('ds')},fimgs={},TN=['Leggera','Media','Pesante','Master leggera','Master media','Master pesante','Ammiraglia'];
 function fimg(i){return fimgs[i]||(fimgs[i]=flagCv(F[i],96,64).toDataURL())}
 function ddr(){const fi=+fs.value,si=+ss.value,f=F[fi];
@@ -623,9 +630,9 @@ function pt(x,y,t,h){const sp=PS.find(q=>!q.visible);if(!sp)return;sp.visible=tr
 const bgeo=new THREE.SphereGeometry(1.2,6,6),bmat=new THREE.MeshBasicMaterial({color:0x111111});
 // ---- logica
 function mk(fi,si,team,x,y,isP){const f=F[fi],d=f[5][si],s={f,d,team,x,y,a:team?PI:0,v:0,lvl:1,hp:d[5],mx:d[5],rl:[0,0],sink:0,tin:0,isP,sd:R()*50};mkMesh(s);return s}
-function start(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];DEMO=0;over=0;cy=0;cdEnd=Date.now()+15000;cdLast=-1;SFX.init();SFX.menu(0);SFX.amb();MS={k:0,r:0,s:0};$('rs').textContent='';
+function start(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];DEMO=0;over=0;cy=0;cdEnd=Date.now()+15000;cdLast=-1;QUIET=0;$('qp').style.display='none';SFX.init();SFX.menu(0);SFX.amb();MS={k:0,r:0,s:0};$('rs').textContent='';
  spawn();
- S.forEach(s=>{if(s.team){s.hp*=DF[DIF].hp;s.mx=s.hp}});$('m').style.display='none'}
+ S.forEach(s=>{if(s.team){s.hp*=DF[DIF].hp;s.mx=s.hp}});$('m').style.display='none';$('xq').style.display='flex'}
 function demoStart(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];over=0;cy=0;cdEnd=0;cdLast=-1;SC=null;DIF=1;DR=0;
  spawn();buildIslands([[-560,-420,120],[600,400,140],[40,-760,150],[-100,820,130]]);pl.isP=false;
  let n0=0,n1=0;S.forEach(s=>{const t=s.team,i=t?n1++:n0++;s.x=(t?1:-1)*(170+R()*70);s.y=(i-2.5)*95+(R()-.5)*30;s.a=t?PI:0;s.lvl=3;s.v=.8});DEMO=1}
@@ -722,7 +729,7 @@ function loop(){T++;pvTick();
   const a=S.filter(s=>!s.team&&s.hp>0).length,b=S.filter(s=>s.team&&s.hp>0).length,rel=wr(wa-pl.a);
   $('h').innerHTML=(PF.n?esc(PF.n)+' · ':'')+pl.f[0]+' – '+pl.d[0]+(pl.d[9]?(pl.d[9]==2?' ★ Ammiraglia':' ★ Master'):'')+'<div class="hb"><i style="width:'+(Math.max(0,pl.hp)/pl.mx*100)+'%;background:'+(pl.hp/pl.mx>.6?'#3cb043':pl.hp/pl.mx>.3?'#e0b020':'#d93025')+'"></i><b>SCAFO '+Math.max(0,pl.hp|0)+' / '+pl.mx+'</b></div>'+SP[pl.lvl][0]+'<br>Vento '+(Math.abs(rel)<PI/4?'in poppa (veloce)':Math.abs(rel)>3*PI/4?'di prua (lento)':'al traverso')+'<br>Alleati '+a+'/6 · Nemici '+b+'/6';
   const el2=(Date.now()-cdEnd)/1000,sv=SC&&SC.b.tm,wn=!b||(sv&&el2>=SC.b.tm&&pl.hp>0),ls=!a||(sv&&pl.hp<=0);
-  if(DEMO){if((wn||ls)&&!DR){DR=1;setTimeout(()=>{if(DEMO)demoStart()},4000)}}else if(!over&&(wn||ls)){over=1;const wv=wn&&!ls;SFX.end(wv);SFX.stop();pfEnd(wv);stEnd(wv);$('t').textContent=wv?'Vittoria! Il mare è tuo':'Sconfitta... la flotta è affondata';$('go').textContent='Rigioca';$('m').style.display='flex'}
+  if(DEMO){if((wn||ls)&&!DR){DR=1;setTimeout(()=>{if(DEMO)demoStart()},4000)}}else if(!over&&(wn||ls)){over=1;const wv=wn&&!ls,qt=QUIET;SFX.end(wv);SFX.stop();pfEnd(wv);stEnd(wv);$('t').textContent=wv?'Vittoria! Il mare è tuo':'Sconfitta... la flotta è affondata';$('go').textContent='Rigioca';$('m').style.display='flex';$('xq').style.display='none';if(qt){$('t').textContent=MODE=='story'?'📜 Modalità Storia':'⚔ Partita veloce';const e=$('rt');e.textContent=(wv?'🏆 Vittoria! Il mare è tuo':'💀 Sconfitta: la flotta è affondata')+' · navi distrutte '+MS.k;e.style.display='block';setTimeout(()=>{e.style.display='none'},6000)}}
   cy=cl(cy+((k.ArrowRight?1:0)-(k.ArrowLeft?1:0))*.03,-3,3);ui();SFX.tickAmb();objUpd();
  }
  const CS=3000/90,cx=pl?pl.x:0,cz=pl?pl.y:0,wx=Math.round(cx/CS)*CS,wz=Math.round(cz/CS)*CS;water.position.set(wx,0,wz);
@@ -786,6 +793,10 @@ pfLoad();pfBtn();renderModes();showScr('home');try{demoStart();document.body.cla
 setTimeout(()=>{document.body.classList.remove('sp');const sp=$('splash');sp.style.opacity=0;setTimeout(()=>sp.remove(),700)},5000);
 $('bk').onclick=()=>{SFX.init();showScr('home')};
 $('cs').onclick=e=>{if(e.target.closest('#nvb')){e.stopPropagation();SFX.init();SFX.click();nvOpen();return}const c=e.target.closest('.bcard');if(!c)return;e.stopPropagation();SFX.init();SFX.click();if(c.classList.contains('lock'))$('rs').textContent='Vinci la battaglia precedente per sbloccarla.';else showBrief(+fs.value,+c.dataset.b)};
+$('xq').onpointerdown=e=>{e.preventDefault();e.stopPropagation();if(over||DEMO)return;SFX.init();SFX.click();$('qr').style.display=SC?'':'none';$('qp').style.display='flex'};
+$('qk').onclick=()=>{$('qp').style.display='none'};
+$('qr').onclick=()=>{$('qp').style.display='none';if(SC)launch(SC)};
+$('qm').onclick=()=>{$('qp').style.display='none';$('xq').style.display='none';SFX.stop();const dead=pl&&pl.hp<=0&&!over;if(dead){QUIET=1}else{over=1;QUIET=1}$('m').style.display='flex';showScr(SC?'story':'quick');if(SC)renderStory();$('t').textContent=SC?'📜 Modalità Storia':'⚔ Partita veloce';$('go').textContent='Salpa!'};
 $('bno').onclick=()=>{$('brief').style.display='none'};
 $('bgo').onclick=()=>{if(!UL(+fs.value,+ss.value)){$('bg').textContent='🔒 La nave scelta è bloccata: scegline una sbloccata (es. la Media).';return}$('brief').style.display='none';launch({me:BR.me,bi:BR.i,b:BT[BR.me][BR.i],dif:BRD})};
 PVR=1;setPreview(F[fs.value],F[fs.value][5][ss.value]);
