@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Battaglie Navali · XII–XVI secolo</title>
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Repubbliche Marinare · XII–XVI secolo</title>
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b2533"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Navali"><link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" href="icon-192.png">
 <style>
 *{-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
@@ -58,6 +58,7 @@ small{display:block;margin-top:12px;font-size:12px}
 #sd .mst{display:block;border:0;margin-top:3px;font-style:italic;font-size:11px;line-height:1.25}
 #i{display:none}#rs{grid-column:1/3;font-size:13px;font-style:italic}
 @media (orientation:landscape){#p{width:min(97vw,820px);grid-template-columns:1fr 176px}}
+#mmu{position:fixed;top:52px;left:10px;z-index:6;padding:7px 11px;font:15px Georgia;color:#3b2208;background:linear-gradient(#f3e2b3,#d9bc7c);border:2px solid #6b4423;border-radius:16px;box-shadow:0 3px 8px #0008}
 #pfb{position:fixed;top:10px;left:10px;z-index:6;padding:7px 12px;font:13px Georgia;color:#3b2208;background:linear-gradient(#f3e2b3,#d9bc7c);border:2px solid #6b4423;border-radius:16px;box-shadow:0 3px 8px #0008}
 #prof{display:none;position:fixed;inset:0;z-index:40;background:#000b;align-items:center;justify-content:center}
 #pc{width:min(94vw,560px);max-height:94vh;overflow-y:auto;box-sizing:border-box;padding:16px 20px;color:#3b2208;border-radius:8px;border:3px solid #6b4423;background:radial-gradient(ellipse at 30% 20%,#f3e2b3,#e0c58a 60%,#c9a468);box-shadow:inset 0 0 30px #7a4a1a88,0 10px 40px #000}
@@ -76,7 +77,7 @@ small{display:block;margin-top:12px;font-size:12px}
 .mb{padding:12px 14px;border:3px double #5a3510;border-radius:8px;background:linear-gradient(#7a4a1a,#4a2e14);color:#f6e0c0;text-align:left;cursor:pointer;box-shadow:0 3px 8px #0006}
 .mb b{display:block;font-size:18px}.mb span{font-size:13px;font-style:italic;opacity:.9}
 #bk{position:fixed;top:10px;left:10px;padding:7px 14px;font:bold 14px Georgia;background:linear-gradient(#f3e2b3,#d9bc7c);color:#3b2208;border:2px solid #6b4423;border-radius:16px;box-shadow:0 3px 8px #0008;z-index:7}
-#splash{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .6s}body.sp #m{background:none}body.sp #splash .art,body.sp #home,body.sp #pfb,body.sp #inst,body.sp #tg,body.sp #wh,body.sp #whz,body.sp .gun,body.sp .sm,body.sp #h,body.sp #mm,body.sp #o,body.sp #cd,body.sp #obj{display:none!important}body.sp #splash{background:linear-gradient(#000b,#0000 48%,#0007)}
+#splash{position:fixed;inset:0;z-index:100;background:#000;display:flex;align-items:center;justify-content:center;transition:opacity .6s}body.sp #m{background:none}body.sp #splash .art,body.sp #home,body.sp #pfb,body.sp #mmu,body.sp #inst,body.sp #tg,body.sp #wh,body.sp #whz,body.sp .gun,body.sp .sm,body.sp #h,body.sp #mm,body.sp #o,body.sp #cd,body.sp #obj{display:none!important}body.sp #splash{background:linear-gradient(#000b,#0000 48%,#0007)}
 #splash svg{width:100%;height:100%;display:block}#splash:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 4px #c9a24a,inset 0 0 0 7px #3b2208,inset 0 0 0 9px #e8b830,inset 0 0 40px #000a}
 .spship{animation:spb 3.2s ease-in-out infinite;transform-origin:80px 58px}.spw1{animation:spx 5s linear infinite}.spw2{animation:spx 3.4s linear infinite reverse}.spoars{animation:spo 1.6s ease-in-out infinite;transform-origin:80px 58px}.spflag{animation:spf 1s ease-in-out infinite;transform-origin:70px 18px}
 @keyframes spb{50%{transform:translateY(1.4px) rotate(.8deg)}}@keyframes spx{to{transform:translateX(20px)}}@keyframes spo{50%{transform:rotate(-3deg)}}@keyframes spf{50%{transform:scaleX(.8)}}
@@ -116,7 +117,7 @@ small{display:block;margin-top:12px;font-size:12px}
 <div class="gun" id="fl"><svg viewBox="0 0 40 24" width="40"><g fill="#e8d5a3"><rect x="4" y="6" width="26" height="9" rx="4"/><circle cx="14" cy="18" r="5.5"/><circle cx="32" cy="10" r="3"/></g></svg><b>SX</b></div>
 <div class="gun" id="fr" style="left:66%"><svg viewBox="0 0 40 24" width="40" style="transform:scaleX(-1)"><g fill="#e8d5a3"><rect x="4" y="6" width="26" height="9" rx="4"/><circle cx="14" cy="18" r="5.5"/><circle cx="32" cy="10" r="3"/></g></svg><b>DX</b></div>
 <div class="sm wood" id="zo" style="right:12px">−</div><div class="sm wood" id="bcam" style="right:112px">⟲</div><div class="sm wood" id="zp" style="right:62px">+</div>
-<div id="m"><div id="home"><h1>⚓ Battaglie Navali</h1><div class="sub">XII – XVI secolo</div><div id="modes"></div></div><button id="pfb">👤 Profilo</button><button id="inst">📲 Installa l'app</button><div id="ihelp"></div><div id="splash"><svg viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<div id="m"><div id="home"><h1>⚓ Repubbliche Marinare</h1><div class="sub">XII – XVI secolo</div><div id="modes"></div></div><button id="pfb">👤 Profilo</button><button id="mmu">🎵</button><button id="inst">📲 Installa l'app</button><div id="ihelp"></div><div id="splash"><svg viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="spk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3a5c"/><stop offset=".55" stop-color="#d9824a"/><stop offset="1" stop-color="#f6c36a"/></linearGradient>
 <linearGradient id="spm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a6a86"/><stop offset="1" stop-color="#06202e"/></linearGradient>
 <linearGradient id="spg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0a8"/><stop offset=".5" stop-color="#e8b830"/><stop offset="1" stop-color="#9a6a14"/></linearGradient>
@@ -132,9 +133,9 @@ small{display:block;margin-top:12px;font-size:12px}
 <path d="M70 17 q8 -3 14 0 q-6 3 -14 4Z" fill="#b3122a" class="spflag"/></g></g>
 <path class="spw1" d="M-20 62 q10 -3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V90 H-20Z" fill="#0d3f57" opacity=".85"/>
 <path class="spw2" d="M-20 70 q10 -3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V90 H-20Z" fill="#082b3d"/>
-</g><text x="80" y="24" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="12.5" fill="url(#spg)" stroke="#3b2208" stroke-width=".5" paint-order="stroke" letter-spacing=".6">BATTAGLIE NAVALI</text>
+</g><text x="80" y="24" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="10.6" fill="url(#spg)" stroke="#3b2208" stroke-width=".5" paint-order="stroke" letter-spacing=".5">REPUBBLICHE MARINARE</text>
 <text x="80" y="33" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="5" fill="#ffe9a8" stroke="#3b2208" stroke-width=".3" paint-order="stroke" letter-spacing="1">XII – XVI secolo</text>
-<path d="M44 36.5 H62 M98 36.5 H116" stroke="#e8b830" stroke-width=".4"/></svg></div><div id="p"><button id="bk">◀ Indietro</button><h1 id="t">⚓ Battaglie Navali</h1><div class="sub">XII – XVI secolo</div><div id="rs"></div><div class="cl"><select id="f" style="display:none"></select><select id="s" style="display:none"></select><label>Scegli la tua marina</label><div class="dd" id="df"></div><label>Scegli la nave</label><div class="dd" id="ds"></div><div class="shp"><canvas id="sc" width="300" height="110"></canvas><div id="sd"></div></div></div><div class="cr"><canvas id="fc" width="240" height="160" style="width:130px;height:87px;margin-top:6px;border:2px solid #5a3510"></canvas><div id="i"></div><div class="dd" id="dd3"></div><button id="go">Salpa!</button></div><div class="cs" id="cs"></div>
+<path d="M44 36.5 H62 M98 36.5 H116" stroke="#e8b830" stroke-width=".4"/></svg></div><div id="p"><button id="bk">◀ Indietro</button><h1 id="t">⚓ Repubbliche Marinare</h1><div class="sub">XII – XVI secolo</div><div id="rs"></div><div class="cl"><select id="f" style="display:none"></select><select id="s" style="display:none"></select><label>Scegli la tua marina</label><div class="dd" id="df"></div><label>Scegli la nave</label><div class="dd" id="ds"></div><div class="shp"><canvas id="sc" width="300" height="110"></canvas><div id="sd"></div></div></div><div class="cr"><canvas id="fc" width="240" height="160" style="width:130px;height:87px;margin-top:6px;border:2px solid #5a3510"></canvas><div id="i"></div><div class="dd" id="dd3"></div><button id="go">Salpa!</button></div><div class="cs" id="cs"></div>
 <small>Telegrafo = velocità · Ruota = timone · SX/DX = cannoni · Trascina per guardare ai lati · +/− o rotella = zoom (tastiera: W/S A/D Q/E)</small></div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script><script>
 const $=id=>document.getElementById(id),R=Math.random,PI=Math.PI,cl=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -184,7 +185,21 @@ const SFX=(()=>{let ac=null,mg=null,nb=null,amb=null,on=true;try{on=localStorage
   if(R()<.004*(.4+vn))creak(0);if(pl.hp>0&&pl.hp<pl.mx*.35&&R()<.01)creak(1)};
  const crash=(x,y)=>{if(!ac||!on)return;const q=sp(x,y);if(q.vol<.03)return;const t=ac.currentTime,g=out(q.pan,Math.max(q.vol,.2)*.9);tone(t,.4,'triangle',120,40,.9,g,.003);noise(t,.5,'bandpass',1500,300,1,.8,g,.002);noise(t+.05,.4,'lowpass',400,80,.8,.5,g,.004)};
  const toggle=()=>{on=!on;if(mg)mg.gain.value=on?.8:0;try{localStorage.setItem('mute',on?'0':'1')}catch(e){}};
- return{init,crash,sail,fire,hit,splash,sink,horn,tick,click,end,oar,creak,amb:ambStart,stop,tickAmb,toggle,isOn:()=>on}})();
+ let mus=null,mt=null,mOn=0,menuOn=0,mi=0,mnext=0;
+ const MEL=[[[62,2],[65,1],[69,2],[67,1]],[[65,2],[64,1],[62,2],[64,1]],[[65,2],[67,1],[69,2],[72,1]],[[71,3],[69,3]],[[69,2],[67,1],[65,2],[64,1]],[[62,2],[64,1],[65,2],[67,1]],[[69,2],[67,1],[65,2],[64,1]],[[62,6]],
+  [[69,2],[69,1],[72,2],[74,1]],[[72,2],[71,1],[69,2],[67,1]],[[69,2],[71,1],[72,2],[71,1]],[[69,3],[67,3]],[[65,2],[67,1],[69,2],[71,1]],[[72,2],[71,1],[69,2],[67,1]],[[65,2],[64,1],[62,2],[64,1]],[[62,6]]];
+ const EV=[];MEL.forEach((m,bar)=>{let t=bar*6;m.forEach(([n,d])=>{EV.push([t,n,d]);t+=d})});
+ const mf=n=>440*Math.pow(2,(n-69)/12);
+ const lute=(t,n,d)=>{const o=ac.createOscillator(),o2=ac.createOscillator(),f=ac.createBiquadFilter(),g=ac.createGain();o.type='triangle';o2.type='sawtooth';o.frequency.value=mf(n);o2.frequency.value=mf(n)*2.003;f.type='lowpass';f.frequency.setValueAtTime(2600,t);f.frequency.exponentialRampToValueAtTime(500,t+d*.9);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.5,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+Math.max(.5,d*1.6));const g2=ac.createGain();g2.gain.value=.18;o.connect(f);o2.connect(g2);g2.connect(f);f.connect(g);g.connect(mus);o.start(t);o2.start(t);o.stop(t+d*1.7+.2);o2.stop(t+d*1.7+.2)};
+ const drone=(t,d)=>{for(const n of[38,45]){const o=ac.createOscillator(),f=ac.createBiquadFilter(),g=ac.createGain();o.type='sawtooth';o.frequency.value=mf(n);f.type='lowpass';f.frequency.value=380;g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.09,t+.4);g.gain.setValueAtTime(.09,t+d-.5);g.gain.linearRampToValueAtTime(.0001,t+d);o.connect(f);f.connect(g);g.connect(mus);o.start(t);o.stop(t+d+.1)}};
+ const drum=(t,v)=>{const o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(55,t+.18);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+.25);o.connect(g);g.connect(mus);o.start(t);o.stop(t+.3)};
+ const msched=()=>{if(!ac||!mOn)return;const E=.27,LOOP=96*E;while(mnext<ac.currentTime+.8){const t0=mnext,ev=EV;for(const[q,n,d]of ev)lute(t0+q*E,n,d*E);for(let b=0;b<16;b++){drum(t0+b*6*E,.5);drum(t0+(b*6+3)*E,.3);if(b%2==0)drone(t0+b*6*E,12*E)}mnext+=LOOP}};
+ const mstart=()=>{if(!ac||mOn||!menuOn)return;if(!mus){mus=ac.createGain();mus.gain.value=0;const dl=ac.createDelay(),fb=ac.createGain(),wg=ac.createGain();dl.delayTime.value=.3;fb.gain.value=.3;wg.gain.value=.35;mus.connect(mg);mus.connect(dl);dl.connect(fb);fb.connect(dl);dl.connect(wg);wg.connect(mg)}mus.gain.cancelScheduledValues(ac.currentTime);mus.gain.setTargetAtTime(.32,ac.currentTime,.4);mOn=1;mnext=ac.currentTime+.15;msched();mt=setInterval(msched,500)};
+ const mstop=()=>{if(!mOn)return;mOn=0;clearInterval(mt);if(mus){const m=mus;mus=null;m.gain.cancelScheduledValues(ac.currentTime);m.gain.setTargetAtTime(0,ac.currentTime,.15);setTimeout(()=>m.disconnect(),700)}};
+ const menu=v=>{menuOn=v?1:0;if(v)mstart();else mstop()};
+ const API={init:()=>{init();mstart()},crash,sail,fire,hit,splash,sink,horn,tick,click,end,oar,creak,amb:ambStart,stop,tickAmb,toggle,isOn:()=>on,menu};
+ for(const k of['crash','sail','fire','hit','splash','sink','horn','oar','creak','tickAmb']){const f=API[k];API[k]=(...a)=>{if(DEMO)return;return f(...a)}}
+ return API})();
 const SP=[["Retro",-.3],["Ferma",0],["Avanti lento",.4],["Mezza vela",.7],["Tutta vela",1]];
 const F=[
 ["Repubblica di Venezia","#b3122a","#e8c24a",3,"#7a4a22",[["Galea sottile",46,7,1,1,90,1.15,.030,6],["Galea bastarda",60,8.5,2,1,140,1,.026,10],["Galeazza",76,12,3,1,210,.8,.019,16]]],
@@ -305,7 +320,7 @@ function spawn(){const st=SC,b=st?st.b:null,na=b?b.n[0]:6,nb=b?b.n[1]:6,ang=(b&&
  for(let i=1;i<na;i++)put(0,i,na,me>=0?me:R()*8|0,R()*3|0,0);
  for(let i=0;i<nb;i++)put(1,i,nb,en>=0?en:R()*8|0,R()*3|0,0)}
 function launch(sc2){SC=sc2;DIF=sc2?sc2.dif:DIFQ;start();const e=document.documentElement;(e.requestFullscreen?e.requestFullscreen():Promise.reject()).then(()=>screen.orientation.lock('landscape')).catch(()=>{})}
-function showScr(w){MODE=w=='story'?'story':'quick';$('home').style.display=w=='home'?'block':'none';$('p').style.display=w=='home'?'none':'';$('p').classList.toggle('story',w=='story');$('pfb').style.display=w=='home'?'':'none';$('inst').style.display=w=='home'&&!stand?'':'none';if(w!='home')$('t').textContent=w=='story'?'📜 Modalità Storia':'⚔ Partita veloce'}
+function showScr(w){SFX.menu(1);$('mmu').style.display=w=='home'?'':'none';MODE=w=='story'?'story':'quick';$('home').style.display=w=='home'?'block':'none';$('p').style.display=w=='home'?'none':'';$('p').classList.toggle('story',w=='story');$('pfb').style.display=w=='home'?'':'none';$('inst').style.display=w=='home'&&!stand?'':'none';if(w!='home')$('t').textContent=w=='story'?'📜 Modalità Storia':'⚔ Partita veloce'}
 const MODES=[{t:'⚔ Partita veloce',d:"Scontro contro l'IA: scegli nazione, nave e difficoltà.",f:()=>showScr('quick')},
  {t:'📜 Modalità Storia',d:'Tre battaglie storiche per ogni nazione, con obiettivi e mappe dedicate.',f:()=>{showScr('story');renderStory()}}];
 function renderModes(){const m=$('modes');m.innerHTML='';MODES.forEach(o=>{const b=document.createElement('div');b.className='mb';b.innerHTML='<b>'+o.t+'</b><span>'+o.d+'</span>';b.onclick=()=>o.f();m.appendChild(b)})}
@@ -608,7 +623,7 @@ function pt(x,y,t,h){const sp=PS.find(q=>!q.visible);if(!sp)return;sp.visible=tr
 const bgeo=new THREE.SphereGeometry(1.2,6,6),bmat=new THREE.MeshBasicMaterial({color:0x111111});
 // ---- logica
 function mk(fi,si,team,x,y,isP){const f=F[fi],d=f[5][si],s={f,d,team,x,y,a:team?PI:0,v:0,lvl:1,hp:d[5],mx:d[5],rl:[0,0],sink:0,tin:0,isP,sd:R()*50};mkMesh(s);return s}
-function start(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];DEMO=0;over=0;cy=0;cdEnd=Date.now()+15000;cdLast=-1;SFX.init();SFX.amb();MS={k:0,r:0,s:0};$('rs').textContent='';
+function start(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];DEMO=0;over=0;cy=0;cdEnd=Date.now()+15000;cdLast=-1;SFX.init();SFX.menu(0);SFX.amb();MS={k:0,r:0,s:0};$('rs').textContent='';
  spawn();
  S.forEach(s=>{if(s.team){s.hp*=DF[DIF].hp;s.mx=s.hp}});$('m').style.display='none'}
 function demoStart(){S.forEach(s=>sc.remove(s.g));B.forEach(b=>sc.remove(b.m));P.forEach(p=>p.sp.visible=false);FM.forEach(f=>f.m.visible=false);S=[];B=[];P=[];FM=[];over=0;cy=0;cdEnd=0;cdLast=-1;SC=null;DIF=1;DR=0;
@@ -758,6 +773,8 @@ addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e});
 $('inst').onclick=async e=>{e.stopPropagation();SFX.init();SFX.click();if(dip){dip.prompt();try{await dip.userChoice}catch(_){}dip=null}else{const h=$('ihelp');h.style.display=h.style.display=='block'?'none':'block';h.innerHTML='Per averla sulla schermata Home: apri il menu del browser (<b>⋮</b> su Android, <b>Condividi ⬆</b> su iPhone) e scegli <b>«Aggiungi a schermata Home»</b>.'}};
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')==0)navigator.serviceWorker.register('sw.js').catch(()=>{});
 $('mt').textContent=SFX.isOn()?'🔊':'🔇';
+function mmU(){$('mmu').textContent=SFX.isOn()?'🎵':'🔇'}mmU();$('mmu').onclick=e=>{e.stopPropagation();SFX.init();SFX.toggle();mmU();$('mt').textContent=SFX.isOn()?'🔊':'🔇'};
+addEventListener('pointerdown',()=>SFX.init(),{once:true});
 $('pfb').onclick=e=>{e.stopPropagation();SFX.init();SFX.click();pfShow()};
 $('pcl').onclick=()=>{$('prof').style.display='none'};
 $('prof').onclick=e=>{if(e.target==$('prof'))$('prof').style.display='none'};
