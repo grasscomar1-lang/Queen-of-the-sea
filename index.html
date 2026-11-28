@@ -212,21 +212,21 @@ function flagCv(f,W=240,H=160){const c=document.createElement('canvas');c.width=
   x.fillStyle='#0004';for(let i=0;i<4;i++){x.beginPath();x.moveTo(0,H*(i*.25+.04));x.lineTo(m*.06,H*(i*.25+.125));x.lineTo(0,H*(i*.25+.21));x.fill()}}
  x.strokeStyle='#0006';x.lineWidth=m*.03;x.strokeRect(0,0,W,H);return c}
 var PVR=0,cdEnd=0,cdLast=-1,DIF=1,DIFQ=1,SC=null,MODE='quick',DF=[{rl:1.5,dm:.7,sp:.2,spd:.85,hp:.9,aim:.15},{rl:1,dm:1,sp:.09,spd:1,hp:1,aim:.3},{rl:.8,dm:1.2,sp:.05,spd:1.05,hp:1.15,aim:.4}];
-const dd={f:$('df'),s:$('ds')},fimgs={},TN=['Leggera','Media','Pesante','Master leggera','Master media','Master pesante'];
+const dd={f:$('df'),s:$('ds')},fimgs={},TN=['Leggera','Media','Pesante','Master leggera','Master media','Master pesante','Ammiraglia'];
 function fimg(i){return fimgs[i]||(fimgs[i]=flagCv(F[i],96,64).toDataURL())}
 function ddr(){const fi=+fs.value,si=+ss.value,f=F[fi];
  dd.f.innerHTML='<div class="ddb"><img src="'+fimg(fi)+'"><span>'+f[0]+'</span><i>▾</i></div><div class="ddl">'+F.map((q,i)=>'<div class="it'+(i==fi?' on':'')+'" data-i="'+i+'"><img src="'+fimg(i)+'"><span>'+q[0]+'</span></div>').join('')+'</div>';
  dd.s.innerHTML='<div class="ddb"><span>'+TN[si]+' – '+f[5][si][0]+'</span><i>▾</i></div><div class="ddl">'+f[5].map((q,i)=>{const u=UL(fi,i);return'<div class="it'+(i==si?' on':'')+(u?'':' lk')+'" data-i="'+i+'"'+(u?'':' style="opacity:.45"')+'><span>'+(u?'':'🔒 ')+TN[i]+' – '+q[0]+'</span><small>'+'Scafo '+q[5]+' · Cannoni '+q[8]+(u?'':' · 🔒 da sbloccare')+'</small></div>'}).join('')+'</div>'}
-const RW=[[0,-1,2],[4,-1,3],[5,-1,-1]],UL=(fi,si)=>si==1||!!((PF.un||{})[fi]||[])[si];
+const AMN=['Bucintoro','Capitana Doria','Capitana pisana','Capitana amalfitana','Sultana','Real','Dromone del Basileus','Capitana corsara'],RW=[[0,-1,2],[4,-1,3],[5,-1,6]],UL=(fi,si)=>si==1||!!((PF.un||{})[fi]||[])[si];
 const DN=['Facile','Media','Difficile'],DD=['Nemici più deboli','Sfida equilibrata','Nemici più forti'];
 function ddd(){$('dd3').innerHTML='<div class="ddb dlk"><b>Difficoltà</b><svg viewBox="0 0 24 26" width="26" height="28"><rect x="3" y="11" width="18" height="13" rx="2.5" fill="#c9a24a" stroke="#5a3a10" stroke-width="1.6"/><path d="M7 11V8a5 5 0 0 1 10 0v3" fill="none" stroke="#5a3a10" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="16.5" r="2" fill="#5a3a10"/><rect x="11.2" y="16.5" width="1.6" height="4.5" fill="#5a3a10"/></svg><small>'+DN[DIF]+'</small></div><div class="ddl">'+DN.map((n,i)=>'<div class="it'+(i==DIF?' on':'')+'" data-i="'+i+'"><span>'+n+'</span><small>'+DD[i]+'</small></div>').join('')+'</div>'}
 var PF={n:'',g:0,w:0,d:0,k:0,s:0,r:0,u:{},st:{},un:{}},MS={k:0,r:0,s:0};
 function esc(t){return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function pfSet(j){if(!j||typeof j!='object')return false;const n=v=>Math.max(0,Math.floor(+v)||0);PF={n:String(j.n||'').slice(0,16),g:n(j.g),w:n(j.w),d:n(j.d),k:n(j.k),s:n(j.s),r:n(j.r),u:{},st:{},un:{}};if(j.un&&typeof j.un=='object')for(const q in j.un)if(Array.isArray(j.un[q]))PF.un[String(q).slice(0,2)]=j.un[q].slice(0,6).map(v=>v?1:0);if(j.st&&typeof j.st=='object')for(const q in j.st)if(Array.isArray(j.st[q]))PF.st[String(q).slice(0,2)]=j.st[q].slice(0,3).map(v=>v?1:0);if(j.u&&typeof j.u=='object')for(const q in j.u)PF.u[String(q).slice(0,80)]=n(j.u[q]);return true}
+function pfSet(j){if(!j||typeof j!='object')return false;const n=v=>Math.max(0,Math.floor(+v)||0);PF={n:String(j.n||'').slice(0,16),g:n(j.g),w:n(j.w),d:n(j.d),k:n(j.k),s:n(j.s),r:n(j.r),u:{},st:{},un:{}};if(j.un&&typeof j.un=='object')for(const q in j.un)if(Array.isArray(j.un[q]))PF.un[String(q).slice(0,2)]=j.un[q].slice(0,7).map(v=>v?1:0);if(j.st&&typeof j.st=='object')for(const q in j.st)if(Array.isArray(j.st[q]))PF.st[String(q).slice(0,2)]=j.st[q].slice(0,3).map(v=>v?1:0);if(j.u&&typeof j.u=='object')for(const q in j.u)PF.u[String(q).slice(0,80)]=n(j.u[q]);return true}
 function pfLoad(){try{pfSet(JSON.parse(localStorage.getItem('navali_pf')||'null'))}catch(e){}}
 function pfSave(){try{localStorage.setItem('navali_pf',JSON.stringify(PF))}catch(e){}}
 function pfBtn(){$('pfb').textContent='👤 '+(PF.n||'Profilo')}
-function shipKey(){return pl.f[0]+' – '+pl.d[0]+(pl.d[9]?' ★ Master':'')}
+function shipKey(){return pl.f[0]+' – '+pl.d[0]+(pl.d[9]?(pl.d[9]==2?' ★ Ammiraglia':' ★ Master'):'')}
 function kill(e){e.dead=1;SFX.sink(e);if(e.isP)MS.s++;else if(e.team&&e.lh&&e.lh.isP){MS.k++;if(e.lr)MS.r++}}
 function pfEnd(win){PF.g++;if(win)PF.w++;else PF.d++;PF.k+=MS.k;PF.s+=MS.s;PF.r+=MS.r;const k=shipKey();PF.u[k]=(PF.u[k]||0)+1;pfSave();
  $('rs').textContent='Partita: navi distrutte '+MS.k+' · speronamenti '+MS.r+' · tua nave affondata: '+(MS.s?'sì':'no')}
@@ -304,11 +304,11 @@ var BRD=1;
 function rwName(d,i){const r=RW[d][i];return r<0?'nessuna ricompensa':'sblocchi: '+TN[r]}
 function bdr(){const e=$('bdf');if(!BR)return;e.innerHTML='<div style="font-size:12px;margin:4px 0">Scegli la difficoltà</div>'+DN.map((n,d)=>'<button data-d="'+d+'" style="margin:2px;padding:5px 9px;border-radius:7px;border:2px solid '+(d==BRD?'#e8b830':'#5a3510')+';background:'+(d==BRD?'#e8b830':'#3a2410')+';color:'+(d==BRD?'#2a1a08':'#f4e4c0')+'">'+n+'<br><small>'+rwName(d,BR.i)+'</small></button>').join('')}
 $('bdf').onclick=e=>{const b=e.target.closest('button');if(b){BRD=+b.dataset.d;bdr()}};
-function stEnd(win){$('obj').style.display='none';if(SC&&win){PF.st=PF.st||{};const a=PF.st[SC.me]||[0,0,0];a[SC.bi]=1;PF.st[SC.me]=a;const r=RW[SC.dif][SC.bi];let nw=0;if(r>=0&&!UL(SC.me,r)){PF.un=PF.un||{};const u=PF.un[SC.me]||[0,0,0,0,0,0];u[r]=1;PF.un[SC.me]=u;nw=1}pfSave();if(nw)setTimeout(()=>{$('rs').textContent+=' · 🎖 Nave sbloccata: '+TN[r]+' ('+F[SC.me][0]+')'},0)}showScr(SC?'story':'quick');if(SC){renderStory();fillS()}}
+function stEnd(win){$('obj').style.display='none';if(SC&&win){PF.st=PF.st||{};const a=PF.st[SC.me]||[0,0,0];a[SC.bi]=1;PF.st[SC.me]=a;const r=RW[SC.dif][SC.bi];let nw=0;if(r>=0&&!UL(SC.me,r)){PF.un=PF.un||{};const u=PF.un[SC.me]||[0,0,0,0,0,0,0];u[r]=1;PF.un[SC.me]=u;nw=1}pfSave();if(nw)setTimeout(()=>{$('rs').textContent+=' · 🎖 Nave sbloccata: '+TN[r]+' ('+F[SC.me][0]+')'},0)}showScr(SC?'story':'quick');if(SC){renderStory();fillS()}}
 function objUpd(){const e=$('obj');if(!SC){e.style.display='none';return}const el=(Date.now()-cdEnd)/1000,b=SC.b;e.style.display='block';e.textContent=b.tm?'Resisti ancora '+fmt(Math.max(0,Math.min(b.tm,Math.ceil(b.tm-el)))):'Distruggi la flotta nemica · '+S.filter(s=>s.team&&s.hp>0).length+' navi rimaste'}
 function sdata(){const d=F[fs.value][5][ss.value],g=d[8],sd=g/2,dm=7,crew=Math.round(d[1]*1.2+g*3+(d[4]?d[1]*2.2:0));
  const rows=[['⚓','Punti vita',d[5]],['💣','Cannoni',g+' ('+sd+' per lato)'],['🎯','Danno cannone',dm],['💥','Danno fiancata',sd+'×'+dm+' = '+sd*dm],['👥','Equipaggio',crew],['⛵','Velocità',d[6]]];
- $('sd').innerHTML=rows.map(r=>'<div><i>'+r[0]+'</i><span>'+r[1]+'</span><b>'+r[2]+'</b></div>').join('')+(d[9]?'<div class="mst">★ Master: +2 cannoni<br>sperone dorato: danno ×2 (fino a 28)<br>immune ai danni da speronamento</div>':'<div class="mst">Speronamento: fino a 14 di danno</div>')}
+ $('sd').innerHTML=rows.map(r=>'<div><i>'+r[0]+'</i><span>'+r[1]+'</span><b>'+r[2]+'</b></div>').join('')+(d[9]==2?'<div class="mst">★ Ammiraglia: +4 cannoni, scafo robusto<br>sperone dorato: danno ×2<br>immune ai danni da speronamento</div>':d[9]?'<div class="mst">★ Master: +2 cannoni<br>sperone dorato: danno ×2 (fino a 28)<br>immune ai danni da speronamento</div>':'<div class="mst">Speronamento: fino a 14 di danno</div>')}
 function ddClose(){document.querySelectorAll('.ddl.open').forEach(e=>e.classList.remove('open'))}
 function shipDraw(cv,f,d){const W=cv.width,H=cv.height,x=cv.getContext('2d'),[,L,Wd,M,Or,,,,G]=d,lw=W*(.5+.4*(L-38)/40),hh=lw*.1*(1+Wd/L*2),x0=(W-lw)/2,y0=H*.76,mh=lw*.5,fl=flagCv(f,100,125),fm=flagCv(f,60,40);
  const bg=x.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#f8edc9');bg.addColorStop(1,'#e6d09a');x.fillStyle=bg;x.fillRect(0,0,W,H);
@@ -326,7 +326,7 @@ function shipDraw(cv,f,d){const W=cv.width,H=cv.height,x=cv.getContext('2d'),[,L
  x.fillStyle='rgba(30,110,140,.85)';x.beginPath();x.moveTo(0,H);for(let i=0;i<=W;i+=8)x.lineTo(i,y0+hh*.12+Math.sin(i*.07)*2.2);x.lineTo(W,H);x.fill();
  x.strokeStyle='#fffa';x.lineWidth=1.2;x.beginPath();for(let i=0;i<=W;i+=8)x[i?'lineTo':'moveTo'](i,y0+hh*.12+Math.sin(i*.07)*2.2);x.stroke();
  x.fillStyle='#3b2208';x.font='bold 12px Georgia';x.fillText(d[0],8,16)}
-F.forEach(f=>{f[5]=f[5].concat(f[5].slice(0,3).map(d=>{const c=d.slice();c[8]=d[8]+2;c[9]=1;return c}))});
+F.forEach((f,fi)=>{f[5]=f[5].concat(f[5].slice(0,3).map(d=>{const c=d.slice();c[8]=d[8]+2;c[9]=1;return c}));const a=f[5][5].slice();a[0]=AMN[fi];a[1]=Math.round(a[1]*1.1);a[5]=Math.round(a[5]*1.25);a[8]=a[8]+2;a[9]=2;f[5].push(a)});
 const fs=$('f'),ss=$('s');F.forEach((f,i)=>fs.add(new Option(f[0],i)));
 function fillS(){ss.innerHTML='';F[fs.value][5].forEach((s,i)=>ss.add(new Option(TN[i]+' – '+s[0],i)));if(!UL(+fs.value,+ss.value))ss.value=1;inf()}
 function inf(){const d=F[fs.value][5][ss.value];$('fc').getContext('2d').drawImage(flagCv(F[fs.value]),0,0);if(PVR)setPreview(F[fs.value],d);sdata();ddr();if(MODE=='story')renderStory();$('i').textContent='Scafo '+d[5]+' · Cannoni '+d[8]+' · Velocità '+d[6]+' · Lunghezza '+d[1]+(UL(+fs.value,+ss.value)?'':'  🔒 Bloccata: vincila nella Storia')}
@@ -424,6 +424,7 @@ function mkMesh(s){const[,L,Wd,M,Or,,,,G]=s.d,f=s.f,gr=new THREE.Group(),Hh=Wd*.
  add(-L*.1,Wd*.1,top+1,1,0);add(L*.1,-Wd*.1,top+1,1,0);
  if(K)galExtra(gr,L,Wd,Hh,top,f,K,s);
  const lt=new THREE.Mesh(new THREE.SphereGeometry(1.3,6,6),new THREE.MeshBasicMaterial({color:0xffd070}));lt.position.set(-L/2-1,top+Hh*.9+(L>50?Hh*.7:0),Wd*.3);gr.add(lt);
+ if(s.d[9]==2){const gm=new THREE.MeshPhongMaterial({color:0xe8b830,shininess:90,flatShading:true}),cs=new THREE.Mesh(new THREE.BoxGeometry(L*.16,Hh*.9,Wd*.8),gm);cs.position.set(-L*.4,top+Hh*.45,0);gr.add(cs);for(const z of[-1,1]){const l2=new THREE.Mesh(new THREE.SphereGeometry(1.1,6,6),new THREE.MeshBasicMaterial({color:0xffd070}));l2.position.set(-L/2-.5,top+Hh*1.5,z*Wd*.32);gr.add(l2)}}
  s.g=gr;sc.add(gr)}
 function goldMix(c){return new THREE.Color(c).lerp(new THREE.Color(0xe8b830),.45)}
 function masterGold(gr,L,Wd,Hh,top){const gm=new THREE.MeshPhongMaterial({color:0xe8b830,shininess:90,specular:0xfff2b0,flatShading:true});
@@ -682,7 +683,7 @@ function loop(){T++;pvTick();
    const z=p.t=='s'?6+(1-q)*14:p.t=='f'?5:3;sp.scale.set(z,z,1);if(p.l<=0)sp.visible=false}
   P=P.filter(p=>p.l>0);
   const a=S.filter(s=>!s.team&&s.hp>0).length,b=S.filter(s=>s.team&&s.hp>0).length,rel=wr(wa-pl.a);
-  $('h').innerHTML=(PF.n?esc(PF.n)+' · ':'')+pl.f[0]+' – '+pl.d[0]+(pl.d[9]?' ★ Master':'')+'<div class="hb"><i style="width:'+(Math.max(0,pl.hp)/pl.mx*100)+'%;background:'+(pl.hp/pl.mx>.6?'#3cb043':pl.hp/pl.mx>.3?'#e0b020':'#d93025')+'"></i><b>SCAFO '+Math.max(0,pl.hp|0)+' / '+pl.mx+'</b></div>'+SP[pl.lvl][0]+'<br>Vento '+(Math.abs(rel)<PI/4?'in poppa (veloce)':Math.abs(rel)>3*PI/4?'di prua (lento)':'al traverso')+'<br>Alleati '+a+'/6 · Nemici '+b+'/6';
+  $('h').innerHTML=(PF.n?esc(PF.n)+' · ':'')+pl.f[0]+' – '+pl.d[0]+(pl.d[9]?(pl.d[9]==2?' ★ Ammiraglia':' ★ Master'):'')+'<div class="hb"><i style="width:'+(Math.max(0,pl.hp)/pl.mx*100)+'%;background:'+(pl.hp/pl.mx>.6?'#3cb043':pl.hp/pl.mx>.3?'#e0b020':'#d93025')+'"></i><b>SCAFO '+Math.max(0,pl.hp|0)+' / '+pl.mx+'</b></div>'+SP[pl.lvl][0]+'<br>Vento '+(Math.abs(rel)<PI/4?'in poppa (veloce)':Math.abs(rel)>3*PI/4?'di prua (lento)':'al traverso')+'<br>Alleati '+a+'/6 · Nemici '+b+'/6';
   const el2=(Date.now()-cdEnd)/1000,sv=SC&&SC.b.tm,wn=!b||(sv&&el2>=SC.b.tm&&pl.hp>0),ls=!a||(sv&&pl.hp<=0);
   if(DEMO){if((wn||ls)&&!DR){DR=1;setTimeout(()=>{if(DEMO)demoStart()},4000)}}else if(!over&&(wn||ls)){over=1;const wv=wn&&!ls;SFX.end(wv);SFX.stop();pfEnd(wv);stEnd(wv);$('t').textContent=wv?'Vittoria! Il mare è tuo':'Sconfitta... la flotta è affondata';$('go').textContent='Rigioca';$('m').style.display='flex'}
   cy=cl(cy+((k.ArrowRight?1:0)-(k.ArrowLeft?1:0))*.03,-3,3);ui();SFX.tickAmb();objUpd();
