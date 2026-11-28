@@ -101,7 +101,7 @@ small{display:block;margin-top:12px;font-size:12px}
 .nvk{width:calc(100% + 14px);height:4px;background:#e8b830;position:relative;margin-top:14px}.nvk:before{content:"";position:absolute;left:50%;top:-14px;width:4px;height:14px;margin-left:-2px;background:#e8b830}
 .nvl{font-size:12px;text-align:center;margin-top:3px;min-height:34px}
 .nvd{flex:0 0 176px}
-#h{top:48px}
+#h{top:12px;right:50px;background:none!important;border:none!important;padding:0!important}#h .hb{margin:0}
 #xq{position:fixed;top:8px;right:8px;width:32px;height:32px;border-radius:50%;z-index:4;display:none;align-items:center;justify-content:center;font-size:16px;font-weight:bold;cursor:pointer}
 body.sp #xq,body.mnu #xq{display:none!important}
 #qp{display:none;position:fixed;inset:0;z-index:42;background:#0008;align-items:center;justify-content:center}
@@ -727,7 +727,7 @@ function loop(){T++;pvTick();
    const z=p.t=='s'?6+(1-q)*14:p.t=='f'?5:3;sp.scale.set(z,z,1);if(p.l<=0)sp.visible=false}
   P=P.filter(p=>p.l>0);
   const a=S.filter(s=>!s.team&&s.hp>0).length,b=S.filter(s=>s.team&&s.hp>0).length,rel=wr(wa-pl.a);
-  $('h').innerHTML=(PF.n?esc(PF.n)+' · ':'')+pl.f[0]+' – '+pl.d[0]+(pl.d[9]?(pl.d[9]==2?' ★ Ammiraglia':' ★ Master'):'')+'<div class="hb"><i style="width:'+(Math.max(0,pl.hp)/pl.mx*100)+'%;background:'+(pl.hp/pl.mx>.6?'#3cb043':pl.hp/pl.mx>.3?'#e0b020':'#d93025')+'"></i><b>SCAFO '+Math.max(0,pl.hp|0)+' / '+pl.mx+'</b></div>'+SP[pl.lvl][0]+'<br>Vento '+(Math.abs(rel)<PI/4?'in poppa (veloce)':Math.abs(rel)>3*PI/4?'di prua (lento)':'al traverso')+'<br>Alleati '+a+'/6 · Nemici '+b+'/6';
+  $('h').innerHTML='<div class="hb"><i style="width:'+(Math.max(0,pl.hp)/pl.mx*100)+'%;background:'+(pl.hp/pl.mx>.6?'#3cb043':pl.hp/pl.mx>.3?'#e0b020':'#d93025')+'"></i><b>'+Math.max(0,pl.hp|0)+' / '+pl.mx+'</b></div>';
   const el2=(Date.now()-cdEnd)/1000,sv=SC&&SC.b.tm,wn=!b||(sv&&el2>=SC.b.tm&&pl.hp>0),ls=!a||(sv&&pl.hp<=0);
   if(DEMO){if((wn||ls)&&!DR){DR=1;setTimeout(()=>{if(DEMO)demoStart()},4000)}}else if(!over&&(wn||ls)){over=1;const wv=wn&&!ls,qt=QUIET;SFX.end(wv);SFX.stop();pfEnd(wv);stEnd(wv);$('t').textContent=wv?'Vittoria! Il mare è tuo':'Sconfitta... la flotta è affondata';$('go').textContent='Rigioca';$('m').style.display='flex';$('xq').style.display='none';if(qt){$('t').textContent=MODE=='story'?'📜 Modalità Storia':'⚔ Partita veloce';const e=$('rt');e.textContent=(wv?'🏆 Vittoria! Il mare è tuo':'💀 Sconfitta: la flotta è affondata')+' · navi distrutte '+MS.k;e.style.display='block';setTimeout(()=>{e.style.display='none'},6000)}}
   cy=cl(cy+((k.ArrowRight?1:0)-(k.ArrowLeft?1:0))*.03,-3,3);ui();SFX.tickAmb();objUpd();
